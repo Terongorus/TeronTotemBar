@@ -2,7 +2,7 @@
 ## Title: Teron Totem Bar
 ## Notes: An addon that displays a totem bar and can also be used to assign totems to all shamans in your party/raid.
 ## Author: Teron
-## Version: v1.1.0-alpha
+## Version: v1.0.5
 ## SavedVariablesPerCharacter: TeronTotemBar_Options, TeronTotemBar_Saved, TeronShamansInGroup
 
 TeronTotemBar.lua
