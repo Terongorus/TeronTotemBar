@@ -27,7 +27,7 @@ An addon that displays a totem bar and can also be used to assign totems to all 
 - shows whether the caster has the aura of the respective totem (which was previously cast by the addon)
 - planned features: CD and duration tracker; one-button function that casts all four totems consecutively
 
-*On this screenshot you can see the Buff Bar. The element buttons appear red, because no totem has been cast and the player has no auras applied on him.*
+*On this screenshot you can see the Buff Bar. The element buttons appear red, because no totem has been cast.*
 ![Screenshot 2025-05-27 165212](https://github.com/user-attachments/assets/56a57ba0-1ab9-477f-a976-b2de76814db8)
 
 *On this screenshot the Buff Bar buttons are now green, showing that the player clicked on them and casted the respective totems.*
