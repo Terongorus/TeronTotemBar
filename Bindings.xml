@@ -1,0 +1,5 @@
+<Bindings>
+    <Binding name="TERONTOTEMBAR_CAST_NEXT_ELEMENT_TOTEM" header="Teron Totem Bar">
+        CastNextElementTotem()
+    </Binding>
+</Bindings>
