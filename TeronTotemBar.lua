@@ -1439,13 +1439,19 @@ function TeronTotemBuffBar_OnUpdate(arg1, arg2)
         end
     end
     if TTB_StoneclawTotemCD and TTB_MagmaTotemDuration then
-        StoneMagmaCDTrackerText:SetText(FormatTimeSeconds(TTB_StoneclawTotemCD));
+        if StoneMagmaCDTracker then
+            StoneMagmaCDTrackerText:SetText(FormatTimeSeconds(TTB_StoneclawTotemCD));
+        end
         if TTB_StoneclawTotemCD <= 1 and TTB_MagmaTotemDuration <= 1 then
-            StoneMagmaCDTrackerText:SetText("");
+            if StoneMagmaCDTracker then
+                StoneMagmaCDTrackerText:SetText("");
+            end
         end
     end
     if TTB_MagmaTotemDuration == nil and TTB_StoneclawTotemCD == nil then
-        StoneMagmaCDTrackerText:SetText("");
+        if StoneMagmaCDTracker then
+            StoneMagmaCDTrackerText:SetText("");
+        end
     end
 
     --debug mode for the durations
