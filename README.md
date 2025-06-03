@@ -1,7 +1,11 @@
 # TeronTotemBar
 An addon that displays a totem bar and can also be used to assign totems to all shamans in your party/raid.
 
-## The addon is still in development!
+## Change Log
+- Added a new function which allows the simultaneous cast of Stoneclaw/Mgama Totem for shaman tanks (the feature can be turned on optionally)
+- Fixed the Totem Auto Cast function which cycles through the assigned totems; now it also tracks totems with their CD (if they have one)
+- Fixed the StoneMagma function (it should now work properly when enabled)
+- Added a new settings menu, but it is still under development
 
 ## How to use the addon:
 
