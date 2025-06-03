@@ -67,6 +67,7 @@ TeronTotemBar_Options = {
     TeronTotemBar_DebugMode = false,
     TeronTotemFrameHidden = true,
     TeronTotemBarOrientation = false, -- false = horizontal, true = vertical (still in development)
+    TeronTotemBar_StoneMagmaMode = false,
 }
 
 local Totem_Types = {"Earth", "Fire", "Water", "Air", "Totemic_Recall"};
@@ -75,9 +76,10 @@ local Totem_Types = {"Earth", "Fire", "Water", "Air", "Totemic_Recall"};
 local Earth_Totems = {
     { 
         button = "TeronTotemBar_Earth_Totem_Empty", 
-        name = nil, icon = EMPTY_ICON, 
+        name = nil, 
+        icon = EMPTY_ICON, 
         duration = 0, 
-        cooldown = 0, 
+        cooldown = nil, 
         buff = false 
     },
     {
@@ -85,10 +87,11 @@ local Earth_Totems = {
         name = "Stoneskin Totem",
         icon = "Interface\\Icons\\Spell_Nature_StoneSkinTotem",
         duration = 120,
-        cooldown = 0,
+        cooldown = nil,
         buff = true,
     },
     {
+        --
         button = "TeronTotemBar_Earth_Totem_2",
         name = "Earthbind Totem",
         icon = "Interface\\Icons\\Spell_Nature_StrengthOfEarthTotem02",
@@ -97,6 +100,7 @@ local Earth_Totems = {
         buff = false,
     },
     {
+        --correct values
         button = "TeronTotemBar_Earth_Totem_3",
         name = "Stoneclaw Totem",
         icon = "Interface\\Icons\\Spell_Nature_StoneClawTotem",
@@ -105,28 +109,31 @@ local Earth_Totems = {
         buff = false,
     },
     {
+        --correct values
         button = "TeronTotemBar_Earth_Totem_4",
         name = "Strength of Earth Totem",
         icon = "Interface\\Icons\\Spell_Nature_EarthBindTotem",
         duration = 120,
-        cooldown = 0,
+        cooldown = nil,
         buff = true,
     },
     {
+        --correct values
         button = "TeronTotemBar_Earth_Totem_5",
         name = "Tremor Totem",
         icon = "Interface\\Icons\\Spell_Nature_TremorTotem",
         duration = 120,
-        cooldown = 0,
+        cooldown = nil,
         buff = false,
     }
 };
 local Fire_Totems = {
     { 
         button = "TeronTotemBar_Fire_Totem_Empty", 
-        name = nil, icon = EMPTY_ICON, 
+        name = nil, 
+        icon = EMPTY_ICON, 
         duration = 0, 
-        cooldown = 0, 
+        cooldown = nil, 
         buff = false 
     },
     {
@@ -134,7 +141,7 @@ local Fire_Totems = {
         name = "Flametongue Totem",
         icon = "Interface\\Icons\\Spell_Nature_GuardianWard",
         duration = 120,
-        cooldown = 0,
+        cooldown = nil,
         buff = true,
     },
     {
@@ -142,7 +149,7 @@ local Fire_Totems = {
         name = "Magma Totem",
         icon = "Interface\\Icons\\Spell_Fire_SelfDestruct",
         duration = 20,
-        cooldown = 0,
+        cooldown = nil,
         buff = false,
     },
     {
@@ -150,7 +157,7 @@ local Fire_Totems = {
         name = "Searing Totem",
         icon = "Interface\\Icons\\Spell_Fire_SearingTotem",
         duration = 55,
-        cooldown = 0,
+        cooldown = nil,
         buff = false,
     },
     {
@@ -166,7 +173,7 @@ local Fire_Totems = {
         name = "Frost Resistance Totem",
         icon = "Interface\\Icons\\Spell_FrostResistanceTotem_01",
         duration = 120,
-        cooldown = 0,
+        cooldown = nil,
         buff = true,
     }
 };
@@ -176,7 +183,7 @@ local Water_Totems = {
         name = nil, 
         icon = EMPTY_ICON, 
         duration = 0, 
-        cooldown = 0, 
+        cooldown = nil, 
         buff = false 
     },
     {
@@ -184,7 +191,7 @@ local Water_Totems = {
         name = "Healing Stream Totem",
         icon = "Interface\\Icons\\INV_Spear_04",
         duration = 60,
-        cooldown = 0,
+        cooldown = nil,
         buff = true,
     },
     {
@@ -192,7 +199,7 @@ local Water_Totems = {
         name = "Mana Spring Totem",
         icon = "Interface\\Icons\\Spell_Nature_ManaRegenTotem",
         duration = 60,
-        cooldown = 0,
+        cooldown = nil,
         buff = true,
     },
     {
@@ -200,7 +207,7 @@ local Water_Totems = {
         name = "Poison Cleansing Totem",
         icon = "Interface\\Icons\\Spell_Nature_PoisonCleansingTotem",
         duration = 120,
-        cooldown = 0,
+        cooldown = nil,
         buff = false,
     },
     {
@@ -208,7 +215,7 @@ local Water_Totems = {
         name = "Disease Cleansing Totem",
         icon = "Interface\\Icons\\Spell_Nature_DiseaseCleansingTotem",
         duration = 120,
-        cooldown = 0,
+        cooldown = nil,
         buff = false,
     },
     {
@@ -216,7 +223,7 @@ local Water_Totems = {
         name = "Fire Resistance Totem",
         icon = "Interface\\Icons\\Spell_FireResistanceTotem_01",
         duration = 120,
-        cooldown = 0,
+        cooldown = nil,
         buff = true,
     },
 };
@@ -226,7 +233,7 @@ local Air_Totems = {
         name = nil, 
         icon = EMPTY_ICON, 
         duration = 0, 
-        cooldown = 0, 
+        cooldown = nil, 
         buff = false 
     },
     {
@@ -234,7 +241,7 @@ local Air_Totems = {
         name = "Windfury Totem",
         icon = "Interface\\Icons\\Spell_Nature_Windfury",
         duration = 120,
-        cooldown = 0,
+        cooldown = nil,
         buff = true,
     },
     {
@@ -242,7 +249,7 @@ local Air_Totems = {
         name = "Grace of Air Totem",
         icon = "Interface\\Icons\\Spell_Nature_InvisibilityTotem",
         duration = 120,
-        cooldown = 0,
+        cooldown = nil,
         buff = true,
     },
     {
@@ -250,7 +257,7 @@ local Air_Totems = {
         name = "Grounding Totem",
         icon = "Interface\\Icons\\Spell_Nature_GroundingTotem",
         duration = 45,
-        cooldown = 13,
+        cooldown = 15,
         buff = true,
     },
     {
@@ -258,7 +265,7 @@ local Air_Totems = {
         name = "Windwall Totem",
         icon = "Interface\\Icons\\Spell_Nature_EarthBind",
         duration = 120,
-        cooldown = 0,
+        cooldown = nil,
         buff = true,
     },
     {
@@ -266,7 +273,7 @@ local Air_Totems = {
         name = "Nature Resistance Totem",
         icon = "Interface\\Icons\\Spell_Nature_NatureResistanceTotem",
         duration = 120,
-        cooldown = 0,
+        cooldown = nil,
         buff = true,
     },
     {
@@ -274,7 +281,7 @@ local Air_Totems = {
         name = "Sentry Totem",
         icon = "Interface\\Icons\\Spell_Nature_SentryTotem",
         duration = 300,
-        cooldown = 0,
+        cooldown = nil,
         buff = true,
     },
     {
@@ -282,7 +289,7 @@ local Air_Totems = {
         name = "Tranquil Air Totem",
         icon = "Interface\\Icons\\Spell_Nature_TranquilAirTotem",
         duration = 120,
-        cooldown = 0,
+        cooldown = nil,
         buff = true,
     },
 };
@@ -297,18 +304,50 @@ local recall_Totems = {
     },
 };
 
+--ASSIGNMENT FRAME HOLDER (contains the assignments for the player and for each shaman in the group)
+
+TeronTotemAssignmentFrameHolder = CreateFrame("Frame", "TeronTotemAssignmentFrameHolder", UIParent);
+TeronTotemAssignmentFrameHolder:SetWidth(400);
+TeronTotemAssignmentFrameHolder:SetHeight(400);
+TeronTotemAssignmentFrameHolder:SetFrameStrata("DIALOG");
+TeronTotemAssignmentFrameHolder:SetPoint("CENTER", 0, 0);
+TeronTotemAssignmentFrameHolder:EnableMouse(true);
+TeronTotemAssignmentFrameHolder:SetMovable(true);
+--events for assignment frame holder
+TeronTotemAssignmentFrameHolder:RegisterEvent("PLAYER_ENTERING_WORLD");
+TeronTotemAssignmentFrameHolder:RegisterEvent("ADDON_LOADED");
+TeronTotemAssignmentFrameHolder:SetScript("OnEvent", function()
+    TeronTotemAssignmentFrameHolder_OnEvent();
+
+end);
+TeronTotemAssignmentFrameHolder:SetScript("OnMouseDown", function()
+    if TeronTotemBar_Options.TeronTotemBar_DebugMode == true then
+        print("ASSIGNMENT FRAME HOLDER - MOUSE DOWN");
+    end
+    if arg1 == "LeftButton" and TeronTotemBar_Options.Assignment_Frame_Lock == false then
+        TeronTotemAssignmentFrameHolder_OnMouseDown();
+    end
+end);
+TeronTotemAssignmentFrameHolder:SetScript("OnMouseUp", function()
+    if TeronTotemBar_Options.TeronTotemBar_DebugMode == true then
+        print("ASSIGNMENT FRAME HOLDER - MOUSE UP");
+    end
+    if arg1 == "LeftButton" and TeronTotemBar_Options.Assignment_Frame_Lock == false then
+        TeronTotemAssignmentFrameHolder_OnMouseUp();
+    end
+end);
+
 --MAIN FRAME (assignment frame)
 
 --create the  main frame for assigning totems
-TeronTotemFrame = CreateFrame("Frame", "TeronTotemBar", UIParent);
+TeronTotemFrame = CreateFrame("Frame", "TeronTotemBar", TeronTotemAssignmentFrameHolder);
 TeronTotemFrame:SetWidth(350);
 TeronTotemFrame:SetHeight(60);
-TeronTotemFrame:SetFrameStrata("DIALOG");
-TeronTotemFrame:SetPoint("CENTER", 0, 0);
+TeronTotemFrame:SetPoint("CENTER", 0, 50);
 --TeronTotemFrame:SetClampedToScreen(true);
 TeronTotemFrame:EnableMouseWheel(true);
-TeronTotemFrame:EnableMouse(true);
-TeronTotemFrame:SetMovable(true);
+--TeronTotemFrame:EnableMouse(true);
+--TeronTotemFrame:SetMovable(true);
 --events for assignment frame
 TeronTotemFrame:RegisterEvent("PLAYER_ENTERING_WORLD");
 TeronTotemFrame:RegisterEvent("PARTY_MEMBERS_CHANGED");
@@ -335,7 +374,7 @@ TeronTotemFrame:SetScript("OnMouseUp", function()
     end
 end);
 
---ASSIGNMENT FRAME
+--BUFF BAR FRAME
 
 --create the totem buff bar frame
 TeronTotemBuffBarFrame = CreateFrame("Frame", "TeronTotemBuffBar", UIParent);
@@ -370,8 +409,10 @@ TeronTotemBuffBarFrame:SetScript("OnMouseUp", function()
     end
 end);
 TeronTotemBuffBarFrame:SetScript("OnUpdate", function()
-    TeronTotemBuffBar_OnUpdate();
+    TeronTotemBuffBar_OnUpdate(arg1, arg2);
 end);
+
+
 
 --FUNCTION TO INITIALIZE THE CONFIGURATION
 
@@ -463,6 +504,9 @@ function InitConfig()
     if TeronTotemBar_Options.TeronTotemFrameHidden == nil then
         TeronTotemBar_Options.TeronTotemFrameHidden = true;
     end
+    if TeronTotemBar_Options.TeronTotemBar_StoneMagmaMode == nil then
+        TeronTotemBar_Options.TeronTotemBar_StoneMagmaMode = false;
+    end
 end
 
 --END OF CONFIGURATION
@@ -470,6 +514,7 @@ end
 -- This will be your SavedVariables table
 TeronTotemBar_Saved = TeronTotemBar_Saved or {} 
 
+--CREATION OF THE DIFFERENT KEY ELEMENTS OF THE ADDON
 --Creates headers for each element
 function CreateTotemHeaderButtons()
     local offset_x = 50;
@@ -481,7 +526,7 @@ function CreateTotemHeaderButtons()
     EarthHeader = CreateFrame("Button", "TeronTotemBar_Earth_Header", TeronTotemFrame);
     EarthHeader:SetWidth(button_size);
     EarthHeader:SetHeight(button_size);
-    EarthHeader:SetPoint(anchor, TTB_general_offset, TeronTotemBar_Options.Frame_Icons_Options.offset_y);
+    EarthHeader:SetPoint(anchor, TTB_general_offset, offset_y);
     EarthHeader:SetNormalTexture("Interface\\Icons\\Spell_Nature_EarthShock");
 
     --Fire Header
@@ -505,11 +550,6 @@ function CreateTotemHeaderButtons()
     AirHeader:SetPoint(anchor, WaterHeader, TeronTotemBar_Options.Frame_Icons_Options.offset_x, 0);
     AirHeader:SetNormalTexture("Interface\\Icons\\Spell_Nature_Cyclone");
 
-end
-
-function Create_Player_Names()
-
-    
 end
 
 --create player headers
@@ -652,6 +692,7 @@ end
 --creates the button holders for each element buff button on the personal buff bar
 function CreateBuffButtonHolders()
     local button_height = 40;
+    local d_insets = 4;
 
     --Earth Buff Button Holder
     EarthBuffButtonHolder = CreateFrame("Button", "TeronTotemBuffBar_Earth_ButtonHolder", TeronTotemBuffBarFrame);
@@ -665,6 +706,7 @@ function CreateBuffButtonHolders()
         tile = true,
         tileSize = 16,
         edgeSize = 16,
+        insets = { left = d_insets, right = d_insets, top = d_insets, bottom = d_insets },
     });
     EarthBuffButtonHolder:SetBackdropColor(0.5, 0.5, 0.5, 0.8); -- Default color
     EarthBuffButtonHolder:SetScript("OnClick", function()
@@ -678,9 +720,15 @@ function CreateBuffButtonHolders()
             if Earth_Totems[TeronTotemBar_Options.SavedTotemIndexes.Earth].name == nil then
                 UIErrorsFrame:AddMessage("No Earth Totem Selected", 1, 0, 0, 1, 5);
             end
-            CastSpellByName(Earth_Totems[TeronTotemBar_Options.SavedTotemIndexes.Earth].name);
+            if (TTB_duration_Earth == 0 or TTB_duration_Earth == nil) and (TTB_cooldown_Earth == 0 or TTB_cooldown_Earth == nil) then
+                CastSpellByName(Earth_Totems[TeronTotemBar_Options.SavedTotemIndexes.Earth].name);
+                TTB_duration_Earth = Earth_Totems[TeronTotemBar_Options.SavedTotemIndexes.Earth].duration;
+            else
+                UIErrorsFrame:AddMessage("Earth Totem is already active or on cooldown!", 1, 0, 0, 1, 5);
+            end
         end
     end);
+
 
     --Fire Buff Button Holder
     FireBuffButtonHolder = CreateFrame("Button", "TeronTotemBuffBar_Fire_ButtonHolder", TeronTotemBuffBarFrame);
@@ -694,6 +742,7 @@ function CreateBuffButtonHolders()
         tile = true,
         tileSize = 16,
         edgeSize = 16,
+        insets = { left = d_insets, right = d_insets, top = d_insets, bottom = d_insets },
     });
     FireBuffButtonHolder:SetScript("OnClick", function()
         if TeronTotemBar_Options.TeronTotemBar_DebugMode == true then
@@ -707,7 +756,12 @@ function CreateBuffButtonHolders()
                 UIErrorsFrame:AddMessage("No Fire Totem Selected", 1, 0, 0, 1, 5);
                 return;
             end
-            CastSpellByName(Fire_Totems[TeronTotemBar_Options.SavedTotemIndexes.Fire].name);
+            if (TTB_duration_Fire == 0 or TTB_duration_Fire == nil) and (TTB_cooldown_Fire == 0 or TTB_cooldown_Fire == nil) then
+                CastSpellByName(Fire_Totems[TeronTotemBar_Options.SavedTotemIndexes.Fire].name);
+                TTB_duration_Fire = Fire_Totems[TeronTotemBar_Options.SavedTotemIndexes.Fire].duration;
+            else
+                UIErrorsFrame:AddMessage("Fire Totem is already active or on cooldown!", 1, 0, 0, 1, 5);
+            end
         end
     end);
 
@@ -723,6 +777,7 @@ function CreateBuffButtonHolders()
         tile = true,
         tileSize = 16,
         edgeSize = 16,
+        insets = { left = d_insets, right = d_insets, top = d_insets, bottom = d_insets },
     });
     WaterBuffButtonHolder:SetScript("OnClick", function()
         if TeronTotemBar_Options.TeronTotemBar_DebugMode == true then
@@ -736,7 +791,12 @@ function CreateBuffButtonHolders()
                 UIErrorsFrame:AddMessage("No Water Totem Selected", 1, 0, 0, 1, 5);
                 return;
             end
-            CastSpellByName(Water_Totems[TeronTotemBar_Options.SavedTotemIndexes.Water].name);    
+            if (TTB_duration_Water == 0 or TTB_duration_Water == nil) and (TTB_cooldown_Water == 0 or TTB_cooldown_Water == nil) then
+                CastSpellByName(Water_Totems[TeronTotemBar_Options.SavedTotemIndexes.Water].name);
+                TTB_duration_Water = Water_Totems[TeronTotemBar_Options.SavedTotemIndexes.Water].duration;
+            else
+                UIErrorsFrame:AddMessage("Water Totem is already active or on cooldown!", 1, 0, 0, 1, 5);
+            end
         end
     end);
 
@@ -752,6 +812,7 @@ function CreateBuffButtonHolders()
         tile = true,
         tileSize = 16,
         edgeSize = 16,
+        insets = { left = d_insets, right = d_insets, top = d_insets, bottom = d_insets },
     });
     AirBuffButtonHolder:SetScript("OnClick", function()
         if TeronTotemBar_Options.TeronTotemBar_DebugMode == true then
@@ -765,7 +826,13 @@ function CreateBuffButtonHolders()
                 UIErrorsFrame:AddMessage("No Air Totem Selected", 1, 0, 0, 1, 5);
                 return;
             end
-            CastSpellByName(Air_Totems[TeronTotemBar_Options.SavedTotemIndexes.Air].name);
+            if (TTB_duration_Air == 0 or TTB_duration_Air == nil) and (TTB_cooldown_Air == 0 or TTB_cooldown_Air == nil) then
+                CastSpellByName(Air_Totems[TeronTotemBar_Options.SavedTotemIndexes.Air].name);
+                TTB_duration_Air = Air_Totems[TeronTotemBar_Options.SavedTotemIndexes.Air].duration;
+            else
+                UIErrorsFrame:AddMessage("Air Totem is already active or on cooldown!", 1, 0, 0, 1, 5);
+            end
+            
         end
     end);
 
@@ -781,6 +848,7 @@ function CreateBuffButtonHolders()
         tile = true,
         tileSize = 16,
         edgeSize = 16,
+        insets = { left = d_insets, right = d_insets, top = d_insets, bottom = d_insets },
     });
     TotemicRecallBuffButtonHolder:SetScript("OnClick", function()
         if TeronTotemBar_Options.TeronTotemBar_DebugMode == true then
@@ -790,10 +858,29 @@ function CreateBuffButtonHolders()
             if TeronTotemBar_Options.TeronTotemBar_DebugMode == true then
                 print(arg1);
             end
-            CastSpellByName(recall_Totems[1].name);
+            if (TTB_recall_totem_CD == 0 or TTB_recall_totem_CD == nil) and (GetSpellCooldown(GetSpellByName(recall_Totems[1].name), BOOKTYPE_SPELL) == 0) then
+                CastSpellByName(recall_Totems[1].name);
+                TTB_recall_totem_CD = recall_Totems[1].cooldown + 1; -- Add 1 second to cooldown to avoid issues with the spell not being ready immediately
+            
+                TTB_duration_Earth = nil; -- Reset Earth Totem duration
+                --TTB_cooldown_Earth = nil; -- Reset Earth Totem cooldown
+                EarthFontString:SetText("D: 0:00"); -- Reset Earth Font String
+                --EarthCooldownText:SetText("CD: 0"); -- Reset Earth Cooldown Text
+                TTB_duration_Fire = nil; -- Reset Fire Totem duration
+                --TTB_cooldown_Fire = nil; -- Reset Fire Totem cooldown
+                FireFontString:SetText("D: 0:00"); -- Reset Fire Font String
+                --FireCooldownText:SetText("CD: 0"); -- Reset Fire Cooldown Text
+                TTB_duration_Water = nil; -- Reset Water Totem duration
+                --TTB_cooldown_Water = nil; -- Reset Water Totem cooldown
+                WaterFontString:SetText("D: 0:00"); -- Reset Water Font String
+                --WaterCooldownText:SetText("CD: 0"); -- Reset Water Cooldown Text
+                TTB_duration_Air = nil; -- Reset Air Totem duration
+                --TTB_cooldown_Air = nil; -- Reset Air Totem cooldown
+                AirFontString:SetText("D: 0:00"); -- Reset Air Font String
+                --AirCooldownText:SetText("CD: 0"); -- Reset Air Cooldown Text
+            end
         end
     end);
-
 end
 
 --buff buttons (outside the main assignment frame)
@@ -833,10 +920,167 @@ function CreateBuffButtons()
     TotemicRecallBuffButton = CreateFrame("Button", "TeronTotemBuffBar_Totemic_Recall_Button", TotemicRecallBuffButtonHolder);
     TotemicRecallBuffButton:SetWidth(button_size);
     TotemicRecallBuffButton:SetHeight(button_size);
-    TotemicRecallBuffButton:SetPoint("CENTER", 0, 0);
+    TotemicRecallBuffButton:SetPoint("LEFT", offset_x, 0);
     TotemicRecallBuffButton:SetNormalTexture(recall_Totems[1].icon);
 end
 
+--creates the font strings for the duration tracking
+function CreateDurationText()
+    local anchor = "RIGHT";
+    local offset_x = -10;
+    local offset_y = -7;
+
+    --creates 4 fontstrings for the duration of each totem on the buff bar
+    EarthFontString = EarthBuffButtonHolder:CreateFontString("TeronTotemBuffBar_Earth_ButtonHolder_Duration", "OVERLAY", "GameFontNormal");
+    FireFontString = FireBuffButtonHolder:CreateFontString("TeronTotemBuffBar_Fire_ButtonHolder_Duration", "OVERLAY", "GameFontNormal");
+    WaterFontString = WaterBuffButtonHolder:CreateFontString("TeronTotemBuffBar_Water_ButtonHolder_Duration", "OVERLAY", "GameFontNormal");
+    AirFontString = AirBuffButtonHolder:CreateFontString("TeronTotemBuffBar_Air_ButtonHolder_Duration", "OVERLAY", "GameFontNormal");
+
+    --Earth Font String
+    EarthFontString:SetPoint(anchor, EarthBuffButtonHolder, offset_x, offset_y);
+    EarthFontString:SetFont("Fonts\\FRIZQT__.TTF", 12, "OUTLINE");
+    EarthFontString:SetTextColor(1, 1, 1, 1); -- White color
+    EarthFontString:SetText("D: 0:00");
+
+    --Fire Font String
+    FireFontString:SetPoint(anchor, FireBuffButtonHolder, offset_x, offset_y);
+    FireFontString:SetFont("Fonts\\FRIZQT__.TTF", 12, "OUTLINE");
+    FireFontString:SetTextColor(1, 1, 1, 1); -- White color
+    FireFontString:SetText("D: 0:00");
+
+    --Water Font String
+    WaterFontString:SetPoint(anchor, WaterBuffButtonHolder, offset_x, offset_y);
+    WaterFontString:SetFont("Fonts\\FRIZQT__.TTF", 12, "OUTLINE");
+    WaterFontString:SetTextColor(1, 1, 1, 1); -- White color
+    WaterFontString:SetText("D: 0:00");
+
+    --Air Font String
+    AirFontString:SetPoint(anchor, AirBuffButtonHolder, offset_x, offset_y);
+    AirFontString:SetFont("Fonts\\FRIZQT__.TTF", 12, "OUTLINE");
+    AirFontString:SetTextColor(1, 1, 1, 1); -- White color
+    AirFontString:SetText("D: 0:00");
+end
+
+--creates the font strings for the cooldown tracker
+function CreateCooldownText()
+    local anchor = "RIGHT";
+    local offset_x = -10;
+    local offset_y = 7;
+
+    --creates the fontstrings
+    EarthCooldownText = EarthBuffButtonHolder:CreateFontString("TeronTotemBuffBar_Earth_ButtonHolder_Cooldown", "OVERLAY", "GameFontNormal");
+    FireCooldownText = FireBuffButtonHolder:CreateFontString("TeronTotemBuffBar_Fire_ButtonHolder_Cooldown", "OVERLAY", "GameFontNormal");
+    WaterCooldownText = WaterBuffButtonHolder:CreateFontString("TeronTotemBuffBar_Water_ButtonHolder_Cooldown", "OVERLAY", "GameFontNormal");
+    AirCooldownText = AirBuffButtonHolder:CreateFontString("TeronTotemBuffBar_Air_ButtonHolder_Cooldown", "OVERLAY", "GameFontNormal");
+    TotemicRecallCooldownText = TotemicRecallBuffButtonHolder:CreateFontString("TeronTotemBuffBar_Totemic_Recall_ButtonHolder_Cooldown", "OVERLAY", "GameFontNormal");
+
+    --Earth Cooldown Text
+    EarthCooldownText:SetPoint(anchor, EarthBuffButtonHolder, offset_x, offset_y);
+    EarthCooldownText:SetFont("Fonts\\FRIZQT__.TTF", 12, "OUTLINE");
+    EarthCooldownText:SetTextColor(1, 1, 1, 1); -- White color
+    EarthCooldownText:SetText("CD: 0");
+
+    --Fire Cooldown Text
+    FireCooldownText:SetPoint(anchor, FireBuffButtonHolder, offset_x, offset_y);
+    FireCooldownText:SetFont("Fonts\\FRIZQT__.TTF", 12, "OUTLINE");
+    FireCooldownText:SetTextColor(1, 1, 1, 1); -- White color
+    FireCooldownText:SetText("CD: 0");
+
+    --Water Cooldown Text
+    WaterCooldownText:SetPoint(anchor, WaterBuffButtonHolder, offset_x, offset_y);
+    WaterCooldownText:SetFont("Fonts\\FRIZQT__.TTF", 12, "OUTLINE");
+    WaterCooldownText:SetTextColor(1, 1, 1, 1); -- White color
+    WaterCooldownText:SetText("CD: 0");
+
+    --Air Cooldown Text
+    AirCooldownText:SetPoint(anchor, AirBuffButtonHolder, offset_x, offset_y);
+    AirCooldownText:SetFont("Fonts\\FRIZQT__.TTF", 12, "OUTLINE");
+    AirCooldownText:SetTextColor(1, 1, 1, 1); -- White color
+    AirCooldownText:SetText("CD: 0");
+
+    --Totemic Recall Cooldown Text
+    TotemicRecallCooldownText:SetPoint(anchor, TotemicRecallBuffButtonHolder, offset_x, 0);
+    TotemicRecallCooldownText:SetFont("Fonts\\FRIZQT__.TTF", 12, "OUTLINE");
+    TotemicRecallCooldownText:SetTextColor(1, 1, 1, 1); -- White color
+    TotemicRecallCooldownText:SetText("CD: 0");
+end
+
+--create Buff Bar Frame Text
+function CreateBuffBarTitle()
+    --creates the title holder for the buff bar
+    BuffBarTitleHolder = CreateFrame("Frame", "TeronTotemBuffBar_TitleHolder", TeronTotemBuffBarFrame);
+    BuffBarTitleHolder:SetWidth(200);
+    BuffBarTitleHolder:SetHeight(30);
+    BuffBarTitleHolder:EnableMouse(true);
+    BuffBarTitleHolder:SetPoint("TOPLEFT", TeronTotemBuffBarFrame, 0, 20);
+    BuffBarTitleHolder:SetScript("OnMouseDown", function()
+        if TeronTotemBar_Options.TeronTotemBar_DebugMode == true then
+            print("Buff Bar Title Holder Clicked");
+        end
+        if arg1 == "LeftButton" then
+            if TeronTotemBar_Options.TeronTotemBar_DebugMode == true then
+                print(arg1);
+            end
+            TeronTotemAssignmentFrameHolder:Show();
+            TeronTotemFrame:Show();
+        end
+    end);
+
+    --creates the title text for the buff bar
+    BuffBarTitle = BuffBarTitleHolder:CreateFontString("TeronTotemBuffBar_Title", "OVERLAY", "GameFontNormal");
+    BuffBarTitle:SetPoint("LEFT", BuffBarTitleHolder, 0, 0);
+    BuffBarTitle:SetFont("Fonts\\FRIZQT__.TTF", 12, "OUTLINE");
+    BuffBarTitle:SetTextColor(1, 1, 1, 1); -- White color
+    BuffBarTitle:SetText("Teron Totem Buff Bar");
+end
+
+--StoneMagma CD Tracker
+function CreateStoneMagmaCDTracker()
+    StoneMagmaCDTracker = CreateFrame("Frame", "TeronTotemBar_StoneMagmaCDTracker", ActionButton1);
+    StoneMagmaCDTracker:SetWidth(40);
+    StoneMagmaCDTracker:SetHeight(40);
+    StoneMagmaCDTracker:SetPoint("CENTER", 0, 0);
+    StoneMagmaCDTrackerText = StoneMagmaCDTracker:CreateFontString("TeronTotemBar_StoneMagmaCDTrackerText", "OVERLAY", "GameFontNormal");
+    StoneMagmaCDTrackerText:SetPoint("CENTER", StoneMagmaCDTracker, "CENTER", 0, 0);
+    StoneMagmaCDTrackerText:SetFont("Fonts\\FRIZQT__.TTF", 18, "OUTLINE");
+    StoneMagmaCDTrackerText:SetTextColor(1, 1, 1, 1); -- White color
+    --StoneMagmaCDTrackerText:SetText("0");
+end
+
+--creates a title font string for the assignment frame
+function CreateAssignmentFrameTitle()
+    AssignmentFrameTitle = TeronTotemAssignmentFrameHolder:CreateFontString("TeronTotemAssignmentFrame_Title", "OVERLAY", "GameFontNormal");
+    AssignmentFrameTitle:SetPoint("TOP", TeronTotemAssignmentFrameHolder, "TOP", 0, -10);
+    AssignmentFrameTitle:SetFont("Fonts\\FRIZQT__.TTF", 14, "OUTLINE");
+    AssignmentFrameTitle:SetTextColor(1, 1, 1, 1); -- White color
+    AssignmentFrameTitle:SetText("Teron Totem Assignment Frame");
+end
+function CreateAssignmentFrameExitButton()
+    AssignmentFrameExitButton = CreateFrame("Button", "TeronTotemAssignmentFrame_ExitButton", TeronTotemAssignmentFrameHolder);
+    AssignmentFrameExitButton:SetWidth(32);
+    AssignmentFrameExitButton:SetHeight(32);
+    AssignmentFrameExitButton:SetPoint("TOPRIGHT", TeronTotemAssignmentFrameHolder, -5, -5);
+    AssignmentFrameExitButton:SetNormalTexture("Interface\\Buttons\\UI-Panel-MinimizeButton-Up");
+    AssignmentFrameExitButton:SetPushedTexture("Interface\\Buttons\\UI-Panel-MinimizeButton-Down");
+    AssignmentFrameExitButton:SetHighlightTexture("Interface\\Buttons\\UI-Panel-MinimizeButton-Highlight");
+    AssignmentFrameExitButton:SetScript("OnClick", function()
+        TeronTotemAssignmentFrameHolder:Hide();
+        TeronTotemFrame:Hide();
+    end);
+end
+function CreateAssignmentFrameSettingsButton()
+    AssignmentFrameSettingsButton = CreateFrame("Button", "TeronTotemAssignmentFrame_SettingsButton", TeronTotemAssignmentFrameHolder, "GameMenuButtonTemplate");
+    AssignmentFrameSettingsButton:SetWidth(100);
+    AssignmentFrameSettingsButton:SetHeight(20);
+    AssignmentFrameSettingsButton:SetPoint("BOTTOMRIGHT", TeronTotemAssignmentFrameHolder, -10, 10);
+    AssignmentFrameSettingsButton:SetText("Settings");
+    AssignmentFrameSettingsButton:SetScript("OnClick", function()
+        TeronTotemSettingsFrame:Show();
+    end);
+    
+end
+
+--END OF CREATION OF THE DIFFERENT KEY ELEMENTS OF THE ADDON
 
 --LOADS THE FRAMES AND THEIR RESPECTIVE ELEMENTS AND SCRIPTS
 --TeronTotemBar_OnLoad is called when the addon is loaded
@@ -847,13 +1091,14 @@ function TeronTotemBar_OnLoad()
         --sets main frame visibility + backdrop
         getglobal("TeronTotemBar"):Hide(); --Hidden by default
         TeronTotemFrame:SetBackdrop({
-            bgFile = "Interface\\Tooltips\\UI-Tooltip-Background",
+            --bgFile = "Interface\\Tooltips\\UI-Tooltip-Background",
             edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
             tile = true,
             tileSize = 16,
             edgeSize = 16,
+            insets = { left = 4, right = 4, top = 4, bottom = 4 },
         });
-        TeronTotemFrame:SetBackdropColor(0.1, 0, 0.7, 0.8); -- Set the background color
+        --TeronTotemFrame:SetBackdropColor(0.1, 0, 0.7, 0.8); -- Set the background color
 
         --UNUSED CODE FOR HIDING/SHOWING THE FRAME
         --if TeronTotemBar_Options.TeronTotemFrameHidden == true then
@@ -892,6 +1137,23 @@ function TeronTotemBuffBar_OnLoad()
     else
         TeronTotemBuffBarFrame:Hide();
         UIErrorsFrame:AddMessage("TeronTotemBar: You are not a Shaman!");
+    end
+end
+function TeronTotemAssignmentFrameHolder_OnLoad()
+    local _,class = UnitClass("player")
+    if class == "SHAMAN" then
+            TeronTotemAssignmentFrameHolder:SetBackdrop({
+                bgFile = "Interface\\DialogFrame\\UI-DialogBox-Background",
+                edgeFile = "Interface\\DialogFrame\\UI-DialogBox-Border",
+                tile = true,
+                tileSize = 16,
+                edgeSize = 16,
+                insets = { left = 4, right = 4, top = 4, bottom = 4 },
+            });
+            TeronTotemAssignmentFrameHolder:Hide();
+    else
+        UIErrorsFrame:AddMessage("TeronTotemBar: You are not a Shaman!");
+        return;
     end
 end
 --END OF FRAME LOADS
@@ -949,6 +1211,31 @@ function TeronTotemBuffBar_MouseUp()
         TeronTotemBuffBarFrame:Show()
     end    
 end
+
+function TeronTotemAssignmentFrameHolder_OnMouseDown()
+    if TeronTotemBar_Options.Assignment_Frame_Lock == false then
+        TeronTotemAssignmentFrameHolder:StartMoving()
+        TeronTotemAssignmentFrameHolder.isMoving = true
+        TeronTotemAssignmentFrameHolder.startPosX = TeronTotemAssignmentFrameHolder:GetLeft()
+        TeronTotemAssignmentFrameHolder.startPosY = TeronTotemAssignmentFrameHolder:GetTop()
+    end
+end
+function TeronTotemAssignmentFrameHolder_OnMouseUp()
+    if (TeronTotemAssignmentFrameHolder.isMoving) then
+        TeronTotemAssignmentFrameHolder:StopMovingOrSizing()
+        TeronTotemAssignmentFrameHolder.isMoving = false
+    end
+    if TeronTotemBar_Options.Assignment_Frame_Lock == false then
+        if
+            abs(TeronTotemAssignmentFrameHolder.startPosX - TeronTotemAssignmentFrameHolder:GetLeft()) < 2 and
+                abs(TeronTotemAssignmentFrameHolder.startPosY - TeronTotemAssignmentFrameHolder:GetTop()) < 2
+        then
+            TeronTotemAssignmentFrameHolder:Show()
+        end
+    else
+        TeronTotemAssignmentFrameHolder:Show()
+    end
+end
 --END OF FRAME MOVEMENT HANDLERS
 
 --EVENT HANDLER FOR THE MAIN ASSIGNMENT FRAME
@@ -975,6 +1262,27 @@ function TeronTotemFrame_OnEvent()
     end
 end
 
+--EVENT HANDLER FOR THE ASSIGNMENT FRAME HANDLER
+function TeronTotemAssignmentFrameHolder_OnEvent()
+    local _,class = UnitClass("player")
+    if class == "SHAMAN" then
+        if event == "PLAYER_ENTERING_WORLD" then
+            UIErrorsFrame:AddMessage("TeronTotem Assignment Frame Holder Loaded", 1.0, 0.0, 0.0, 1.0, UIERRORS_HOLD_TIME);
+        elseif event == "ADDON_LOADED" and arg1 == "TeronTotemBar" then
+            if TeronTotemBar_Options.TeronTotemBar_DebugMode == true then
+                print("TeronTotemBar Addon Loaded");
+            end
+            TeronTotemAssignmentFrameHolder_OnLoad();
+            --loads the different elements of the assignment frame holder
+            CreateAssignmentFrameTitle();
+            CreateAssignmentFrameExitButton();
+            CreateAssignmentFrameSettingsButton();
+        end
+    else
+        return;
+    end
+end
+
 --EVENT HANDLER FOR THE BUFF BAR FRAME
 function TeronTotemBuffBarFrame_OnEvent()
     local _,class = UnitClass("player")
@@ -989,12 +1297,16 @@ function TeronTotemBuffBarFrame_OnEvent()
             --loads the different elements of the buff bar
             CreateBuffButtonHolders();
             CreateBuffButtons();
+            CreateDurationText();
+            CreateCooldownText();
+            CreateBuffBarTitle();
+            CreateStoneMagmaCDTracker();
         end
-    else 
+    else
         return;
     end
 end
-function TeronTotemBuffBar_OnUpdate()
+function TeronTotemBuffBar_OnUpdate(arg1, arg2)
     local TTB_buff;
     EarthBuffButtonHolder:SetBackdropColor(1, 0, 0, 1); -- Red if buff is not active
     FireBuffButtonHolder:SetBackdropColor(1, 0, 0, 1); -- Red if buff is not active
@@ -1007,22 +1319,143 @@ function TeronTotemBuffBar_OnUpdate()
         if TeronTotemBar_Options.TeronTotemBar_DebugMode == true and TTB_buff then
             print("Checking Earth Totem Buff: " .. TTB_buff);
         end
-        if TTB_buff and (TTB_buff == Earth_Totems[TeronTotemBar_Options.SavedTotemIndexes.Earth].icon) then
+        if (TTB_buff and (TTB_buff == Earth_Totems[TeronTotemBar_Options.SavedTotemIndexes.Earth].icon)) or (TTB_duration_Earth ~= 0 and TTB_duration_Earth ~= nil) then
             EarthBuffButtonHolder:SetBackdropColor(0, 1, 0, 1); -- Green if buff is active
         end
-        if TTB_buff and (TTB_buff == Fire_Totems[TeronTotemBar_Options.SavedTotemIndexes.Fire].icon) then
+        if TTB_buff and (TTB_buff == Fire_Totems[TeronTotemBar_Options.SavedTotemIndexes.Fire].icon) or (TTB_duration_Fire ~= 0 and TTB_duration_Fire ~= nil) then
             FireBuffButtonHolder:SetBackdropColor(0, 1, 0, 1); -- Green if buff is active
 
         end
-        if TTB_buff and (TTB_buff == Water_Totems[TeronTotemBar_Options.SavedTotemIndexes.Water].icon) then
+        if TTB_buff and (TTB_buff == Water_Totems[TeronTotemBar_Options.SavedTotemIndexes.Water].icon) or (TTB_duration_Water ~= 0 and TTB_duration_Water ~= nil) then
             WaterBuffButtonHolder:SetBackdropColor(0, 1, 0, 1); -- Green if buff is active
         end
-        if TTB_buff and (TTB_buff == Air_Totems[TeronTotemBar_Options.SavedTotemIndexes.Air].icon) then
+        if TTB_buff and (TTB_buff == Air_Totems[TeronTotemBar_Options.SavedTotemIndexes.Air].icon) or (TTB_duration_Air ~= 0 and TTB_duration_Air ~= nil) then
             AirBuffButtonHolder:SetBackdropColor(0, 1, 0, 1); -- Green if buff is active
         end
         if not TTB_buff then 
             break; -- Exit the loop if any buff is found
         end
+    end
+
+    --update the duration text for each totem
+    if TTB_duration_Earth then
+        TTB_duration_Earth = TTB_duration_Earth - arg1;
+        EarthFontString:SetText("D: " .. FormatTime(TTB_duration_Earth));
+        if TTB_duration_Earth <= 0 then
+            EarthFontString:SetText("D: 0:00");
+            TTB_duration_Earth = nil; -- Reset the duration if it reaches zero
+        end
+    end
+    if TTB_duration_Fire then
+        TTB_duration_Fire = TTB_duration_Fire - arg1;
+        FireFontString:SetText("D: " .. FormatTime(TTB_duration_Fire));
+        if TTB_duration_Fire <= 0 then
+            FireFontString:SetText("D: 0:00");
+            TTB_duration_Fire = nil; -- Reset the duration if it reaches zero
+        end
+    end
+    if TTB_duration_Water then
+        TTB_duration_Water = TTB_duration_Water - arg1;
+        WaterFontString:SetText("D: " .. FormatTime(TTB_duration_Water));
+        if TTB_duration_Water <= 0 then
+            WaterFontString:SetText("D: 0:00");
+            TTB_duration_Water = nil; -- Reset the duration if it reaches zero
+        end
+    end
+    if TTB_duration_Air then
+        TTB_duration_Air = TTB_duration_Air - arg1;
+        AirFontString:SetText("D: " .. FormatTime(TTB_duration_Air));
+        if TTB_duration_Air <= 0 then
+            AirFontString:SetText("D: 0:00");
+            TTB_duration_Air = nil; -- Reset the duration if it reaches zero
+        end
+    end
+
+    --update the cooldown text for each totem
+    if TTB_cooldown_Earth then
+        TTB_cooldown_Earth = TTB_cooldown_Earth - arg1;
+        EarthCooldownText:SetText("CD: " .. FormatTimeSeconds(TTB_cooldown_Earth));
+        if TTB_cooldown_Earth <= 0 then
+            EarthCooldownText:SetText("CD: 0");
+            TTB_cooldown_Earth = nil; -- Reset the cooldown if it reaches zero
+        end
+    end
+    if TTB_cooldown_Fire then
+        TTB_cooldown_Fire = TTB_cooldown_Fire - arg1;
+        FireCooldownText:SetText("CD: " .. FormatTimeSeconds(TTB_cooldown_Fire));
+        if TTB_cooldown_Fire <= 0 then
+            FireCooldownText:SetText("CD: 0");
+            TTB_cooldown_Fire = nil; -- Reset the cooldown if it reaches zero
+        end
+    end
+    if TTB_cooldown_Water then
+        TTB_cooldown_Water = TTB_cooldown_Water - arg1;
+        WaterCooldownText:SetText("CD: " .. FormatTimeSeconds(TTB_cooldown_Water));
+        if TTB_cooldown_Water <= 0 then
+            WaterCooldownText:SetText("CD: 0");
+            TTB_cooldown_Water = nil; -- Reset the cooldown if it reaches zero
+        end
+    end
+    if TTB_cooldown_Air then
+        TTB_cooldown_Air = TTB_cooldown_Air - arg1;
+        AirCooldownText:SetText("CD: " .. FormatTimeSeconds(TTB_cooldown_Air));
+        if TTB_cooldown_Air <= 0 then
+            AirCooldownText:SetText("CD: 0");
+            TTB_cooldown_Air = nil; -- Reset the cooldown if it reaches zero
+        end
+    end
+
+    --update totemic recall cooldown
+    if TTB_recall_totem_CD then
+        TTB_recall_totem_CD = TTB_recall_totem_CD - arg1;
+        TotemicRecallCooldownText:SetText("CD: " .. FormatTimeSeconds(TTB_recall_totem_CD));
+        if TTB_recall_totem_CD <= 0 then
+            TotemicRecallCooldownText:SetText("CD: 0"); -- Reset the cooldown text if it reaches zero
+            TTB_recall_totem_CD = nil; -- Reset the cooldown if it reaches zero
+        end
+    end
+
+    --updates the global CD
+    if TTB_globalCD == nil then
+        TTB_globalCD = 0; -- Initialize global cooldown if not set
+    end
+    if TTB_globalCD >= 0 then
+        TTB_globalCD = TTB_globalCD - arg1; 
+    else
+        TTB_globalCD = 0; -- Ensure the global cooldown does not go below zero
+    end
+    
+    --StoneMagma Totem cooldown handler
+    if TTB_MagmaTotemDuration then
+        TTB_MagmaTotemDuration = TTB_MagmaTotemDuration - arg1;
+        if TTB_MagmaTotemDuration <= 0 then
+            TTB_MagmaTotemDuration = nil; -- Reset the duration if it reaches zero
+        end
+    end
+    if TTB_StoneclawTotemCD then
+        TTB_StoneclawTotemCD = TTB_StoneclawTotemCD - arg1;
+        if TTB_StoneclawTotemCD <= 0 then
+            TTB_StoneclawTotemCD = nil; -- Reset the cooldown if it reaches zero
+        end
+    end
+    if TTB_StoneclawTotemCD and TTB_MagmaTotemDuration then
+        StoneMagmaCDTrackerText:SetText(FormatTimeSeconds(TTB_StoneclawTotemCD));
+        if TTB_StoneclawTotemCD <= 1 and TTB_MagmaTotemDuration <= 1 then
+            StoneMagmaCDTrackerText:SetText("");
+        end
+    end
+    if TTB_MagmaTotemDuration == nil and TTB_StoneclawTotemCD == nil then
+        StoneMagmaCDTrackerText:SetText("");
+    end
+
+    --debug mode for the durations
+    if TeronTotemBar_Options.TeronTotemBar_DebugMode == true then
+        --print("Earth Totem Duration: " .. (TTB_duration_Earth or "nil"));
+        --print("Fire Totem Duration: " .. (TTB_duration_Fire or "nil"));
+        --print("Water Totem Duration: " .. (TTB_duration_Water or "nil"));
+        --print("Air Totem Duration: " .. (TTB_duration_Air or "nil"));
+        print("Global Cooldown: " .. TTB_globalCD);
+        print("Magma Totem Duration: " .. (TTB_MagmaTotemDuration or "nil"));
     end
 end
 --END OF EVENT HANDLER FOR THE BUFF BAR FRAME
@@ -1051,10 +1484,18 @@ function TeronTotemBar_SlashCommands(msg)
         elseif TeronTotemBar_Options.TeronTotemBar_DebugMode == false then
             UIErrorsFrame:AddMessage("TeronTotemBar: Debug mode is now off!");
         end
---    elseif msg == "reset" then
---        TeronTotemFrame:SetPoint("CENTER", 0, 0);
---    elseif msg == "cast" then
---        CastNextElementTotem();
+    elseif msg == "stonemagma" then
+        TeronTotemBar_Options.TeronTotemBar_StoneMagmaMode = not TeronTotemBar_Options.TeronTotemBar_StoneMagmaMode;
+        if TeronTotemBar_Options.TeronTotemBar_StoneMagmaMode == true then
+            StoneMagmaCDTracker:Show();
+            UIErrorsFrame:AddMessage("TeronTotemBar: StoneMagma mode is now on!");
+        elseif TeronTotemBar_Options.TeronTotemBar_StoneMagmaMode == false then
+            StoneMagmaCDTracker:Hide();
+            UIErrorsFrame:AddMessage("TeronTotemBar: StoneMagma mode is now off!");
+        end
+    elseif msg == "config" then
+        TeronTotemSettingsFrame:Show();
+        UIErrorsFrame:AddMessage("TeronTotemBar: Settings opened.");
     elseif msg == "help" then
         --list of slash commands
         print("TeronTotemBar list of slash commands:");
@@ -1062,10 +1503,28 @@ function TeronTotemBar_SlashCommands(msg)
         print("/ttb hide - hides the assignment frame");
         print("/ttb lock - locks both the assignment and buff frames in place");
         print("/ttb unlock - unlocks both the assignment and buff frames");
+        print("/ttb stonemagma - enables/disables the StoneMagma mode");
         print("/ttb debug - enables/disables the debug mode for TeronTotemBar");
+        print("/ttb config - opens the settings frame for TeronTotemBar");
     end
 end
 --END OF SLASH COMMANDS HANDLER
+
+function FormatTime(time)
+    if not time or time < 0 then
+        return ""
+    end
+    TTB_mins = floor(time / 60)
+    TTB_secs = time - (TTB_mins * 60)
+    return string.format("%d:%02d", TTB_mins, TTB_secs)
+end
+function FormatTimeSeconds(time)
+    if not time or time < 0 then
+        return ""
+    end
+    TTB_seconds_only = floor(time)
+    return string.format("%d", TTB_seconds_only)
+end
 
 --Get the current time
 function GetNow()
@@ -1238,3 +1697,90 @@ function StoreAllSham_Party()
     end
 end
 
+function AutoCastTotems()
+    DoEmote("stand"); -- Emote to eliminate the bug which occurs when casting totems while sitting
+
+    --cast Earth Totem
+    if TTB_globalCD == 0 and Earth_Totems[TeronTotemBar_Options.SavedTotemIndexes.Earth].name then
+        if (TTB_duration_Earth == 0 or TTB_duration_Earth == nil) and (TTB_cooldown_Earth == 0 or TTB_cooldown_Earth == nil) then
+            CastSpellByName(Earth_Totems[TeronTotemBar_Options.SavedTotemIndexes.Earth].name);
+            TTB_duration_Earth = Earth_Totems[TeronTotemBar_Options.SavedTotemIndexes.Earth].duration;
+            TTB_cooldown_Earth = Earth_Totems[TeronTotemBar_Options.SavedTotemIndexes.Earth].cooldown;
+            TTB_globalCD = 0.2; -- Set global cooldown for the next totem cast
+        else
+            UIErrorsFrame:AddMessage("Earth Totem is already active or on cooldown!", 1, 0, 0, 1, 5);
+        end
+    end
+
+    --cast Fire Totem (check if the previous totem is still under global cooldown)
+    if TTB_globalCD == 0 and Fire_Totems[TeronTotemBar_Options.SavedTotemIndexes.Fire].name then
+        if (TTB_duration_Fire == 0 or TTB_duration_Fire == nil) and (TTB_cooldown_Fire == 0 or TTB_cooldown_Fire == nil) then
+            CastSpellByName(Fire_Totems[TeronTotemBar_Options.SavedTotemIndexes.Fire].name);
+            TTB_duration_Fire = Fire_Totems[TeronTotemBar_Options.SavedTotemIndexes.Fire].duration;
+            TTB_cooldown_Fire = Fire_Totems[TeronTotemBar_Options.SavedTotemIndexes.Fire].cooldown;
+            TTB_globalCD = 0.2; -- Set global cooldown for the next totem cast
+        else
+            UIErrorsFrame:AddMessage("Fire Totem is already active or on cooldown!", 1, 0, 0, 1, 5);
+        end
+    end
+
+    --cast Water Totem (check if the previous totem is still under global cooldown)
+    if TTB_globalCD == 0 and Water_Totems[TeronTotemBar_Options.SavedTotemIndexes.Water].name then
+        if (TTB_duration_Water == 0 or TTB_duration_Water == nil) and (TTB_cooldown_Water == 0 or TTB_cooldown_Water == nil) then
+            CastSpellByName(Water_Totems[TeronTotemBar_Options.SavedTotemIndexes.Water].name);
+            TTB_duration_Water = Water_Totems[TeronTotemBar_Options.SavedTotemIndexes.Water].duration;
+            TTB_cooldown_Water = Water_Totems[TeronTotemBar_Options.SavedTotemIndexes.Water].cooldown;
+            TTB_globalCD = 0.2; -- Set global cooldown for the next totem cast
+        else
+            UIErrorsFrame:AddMessage("Water Totem is already active or on cooldown!", 1, 0, 0, 1, 5);
+        end
+    end
+
+    --cast Air Totem (check if the previous totem is still under global cooldown)
+    if TTB_globalCD == 0 and Air_Totems[TeronTotemBar_Options.SavedTotemIndexes.Air].name then
+        if (TTB_duration_Air == 0 or TTB_duration_Air == nil) and (TTB_cooldown_Air == 0 or TTB_cooldown_Air == nil) then
+            CastSpellByName(Air_Totems[TeronTotemBar_Options.SavedTotemIndexes.Air].name);
+            TTB_duration_Air = Air_Totems[TeronTotemBar_Options.SavedTotemIndexes.Air].duration;
+            TTB_cooldown_Air = Air_Totems[TeronTotemBar_Options.SavedTotemIndexes.Air].cooldown;
+            TTB_globalCD = 0.2; -- Reset global cooldown for the next totem cast
+        else
+            UIErrorsFrame:AddMessage("Air Totem is already active or on cooldown!", 1, 0, 0, 1, 5);
+        end
+    end
+    if TeronTotemBar_Options.TeronTotemBar_DebugMode == true then
+        print("TeronTotemBar: Auto casting totems.");
+    end
+end
+
+--Stoneclaw Totem + Magma Totem (with cooldown/duration check)
+function CastStoneMagma()
+    DoEmote("stand"); -- Emote to eliminate the bug which occurs when casting totems while sitting
+
+    if TeronTotemBar_Options.TeronTotemBar_DebugMode == true then
+        print(FormatTime(TTB_MagmaTotemDuration));
+        print(FormatTime(TTB_globalCD));
+    end
+
+    if TeronTotemBar_Options.TeronTotemBar_StoneMagmaMode == true then
+        -- Check if Stoneclaw Totem is on cooldown or not
+        if TTB_globalCD == 0 then
+            if (TTB_StoneclawTotemCD == 0 or TTB_StoneclawTotemCD == nil) and GetSpellCooldown(GetSpellByName("Stoneclaw Totem"), BOOKTYPE_SPELL) == 0 then
+                CastSpellByName("Stoneclaw Totem");
+                TTB_StoneclawTotemCD = 30; -- Set cooldown for Stoneclaw Totem
+                TTB_globalCD = 0.2; -- Set global cooldown for the next totem cast
+            else
+                UIErrorsFrame:AddMessage("Stoneclaw Totem is on cooldown", 1, 0, 0, 1, 5);
+            end
+        end
+        -- Check if Magma Totem is active or not
+        if TTB_globalCD == 0 then
+            if TTB_MagmaTotemDuration == 0 or TTB_MagmaTotemDuration == nil then
+                CastSpellByName("Magma Totem");
+                TTB_MagmaTotemDuration = 30; -- Reset the duration for Magma Totem
+                TTB_globalCD = 0.2; -- Set global cooldown for the next totem cast
+            else
+                UIErrorsFrame:AddMessage("Magma Totem is already active", 1, 0, 0, 1, 5);
+            end
+        end
+    end
+end
