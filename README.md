@@ -2,6 +2,14 @@
 An addon that displays a totem bar and can also be used to assign totems to all shamans in your party/raid.
 
 ## Change Log
+### V1.2.0
+- Fixed the frames, they should show up properly now on any client
+- Added a new and improved assignement frame with better visibility and a proper close button
+- Added a new button in the assignment frame which will be used to assign weapon enhancements for shamans (under development)
+- Made some changes to the settings menu
+- The assignment frame can now be opened using the frame title above the Buff Bar - "Teron Totem Buff Bar". SImply clicking it will open the assignment menu.
+- Added a button in the assignment frame which opens the settings (bottom right corner).
+### v1.1.0
 - Added a new function which allows the simultaneous cast of Stoneclaw/Mgama Totem for shaman tanks (the feature can be turned on optionally)
 - Fixed the Totem Auto Cast function which cycles through the assigned totems; now it also tracks totems with their CD (if they have one)
 - Fixed the StoneMagma function (it should now work properly when enabled)
