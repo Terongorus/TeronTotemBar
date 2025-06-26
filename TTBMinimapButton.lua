@@ -22,8 +22,8 @@ end)
 
 --sets the initial look of the settings frame
 function TeronTotemSettingsFrame_OnLoad()
-    TeronTotemSettingsFrame:Hide();
-    TeronTotemSettingsFrame:SetBackdrop({
+    getglobal("TeronTotemSettingsFrame"):Hide();
+    getglobal("TeronTotemSettingsFrame"):SetBackdrop({
     bgFile = "Interface\\DialogFrame\\UI-DialogBox-Background",
     edgeFile = "Interface\\DialogFrame\\UI-DialogBox-Border",
     tile = true, 
@@ -31,14 +31,14 @@ function TeronTotemSettingsFrame_OnLoad()
     edgeSize = 32,
     insets = { left = 11, right = 12, top = 12, bottom = 11 }
     });
-    TeronTotemSettingsFrame:SetBackdropColor(0.5, 0.5, 0.5, 0.8) --default color
-    TeronTotemSettingsFrame:EnableMouse(true);
-    TeronTotemSettingsFrame:SetMovable(true);
-    TeronTotemSettingsFrame:RegisterForDrag("LeftButton");
-    TeronTotemSettingsFrame:SetScript("OnMouseDown", function() 
+    getglobal("TeronTotemSettingsFrame"):SetBackdropColor(0.5, 0.5, 0.5, 0.8) --default color
+    getglobal("TeronTotemSettingsFrame"):EnableMouse(true);
+    getglobal("TeronTotemSettingsFrame"):SetMovable(true);
+    getglobal("TeronTotemSettingsFrame"):RegisterForDrag("LeftButton");
+    getglobal("TeronTotemSettingsFrame"):SetScript("OnMouseDown", function() 
         TeronTotemSettingsFrame_OnMouseDown();
     end);
-    TeronTotemSettingsFrame:SetScript("OnMouseUp", function() 
+    getglobal("TeronTotemSettingsFrame"):SetScript("OnMouseUp", function() 
         TeronTotemSettingsFrame_OnMouseUp();
     end);
 end
@@ -66,7 +66,7 @@ function CreateExitSettingsButton()
     ExitButton:SetPushedTexture("Interface\\Buttons\\UI-Panel-MinimizeButton-Down");
     ExitButton:SetHighlightTexture("Interface\\Buttons\\UI-Panel-MinimizeButton-Highlight");
     ExitButton:SetScript("OnClick", function()
-        TeronTotemSettingsFrame:Hide();
+        getglobal("TeronTotemSettingsFrame"):Hide();
     end);
 end
 
@@ -181,6 +181,6 @@ function TeronTotemSettingsFrame_OnMouseUp()
 
     end
     if abs(TeronTotemSettingsFrame.startPosX - TeronTotemSettingsFrame:GetLeft()) < 2 and abs(TeronTotemSettingsFrame.startPosY - TeronTotemSettingsFrame:GetTop()) < 2 then
-        TeronTotemSettingsFrame:Show();
+        getglobal("TeronTotemSettingsFrame"):Show();
     end
 end
