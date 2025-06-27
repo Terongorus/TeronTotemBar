@@ -1049,28 +1049,28 @@ function CreateBuffButtons()
     local offset_x = 10;
 
     --Earth Buff Button
-    EarthBuffButton = CreateFrame("Button", "TeronTotemBuffBar_Earth_Button", EarthBuffButtonHolder);
+    EarthBuffButton = CreateFrame("Button", "TeronTotemBuffBar_Earth_Icon", EarthBuffButtonHolder);
     EarthBuffButton:SetWidth(button_size);
     EarthBuffButton:SetHeight(button_size);
     EarthBuffButton:SetPoint("LEFT", offset_x, 0);
     EarthBuffButton:SetNormalTexture(Earth_Totems[TeronTotemBar_Options.SavedTotemIndexes.Earth].icon);
 
     --Fire Buff Button
-    FireBuffButton = CreateFrame("Button", "TeronTotemBuffBar_Fire_Button", FireBuffButtonHolder);
+    FireBuffButton = CreateFrame("Button", "TeronTotemBuffBar_Fire_Icon", FireBuffButtonHolder);
     FireBuffButton:SetWidth(button_size);
     FireBuffButton:SetHeight(button_size);
     FireBuffButton:SetPoint("LEFT", offset_x, 0);
     FireBuffButton:SetNormalTexture(Fire_Totems[TeronTotemBar_Options.SavedTotemIndexes.Fire].icon);
     
     --Water Buff Button
-    WaterBuffButton = CreateFrame("Button", "TeronTotemBuffBar_Water_Button", WaterBuffButtonHolder);
+    WaterBuffButton = CreateFrame("Button", "TeronTotemBuffBar_Water_Icon", WaterBuffButtonHolder);
     WaterBuffButton:SetWidth(button_size);
     WaterBuffButton:SetHeight(button_size);
     WaterBuffButton:SetPoint("LEFT", offset_x, 0);
     WaterBuffButton:SetNormalTexture(Water_Totems[TeronTotemBar_Options.SavedTotemIndexes.Water].icon);
     
     --Air Buff Button
-    AirBuffButton = CreateFrame("Button", "TeronTotemBuffBar_Air_Button", AirBuffButtonHolder);
+    AirBuffButton = CreateFrame("Button", "TeronTotemBuffBar_Air_Icon", AirBuffButtonHolder);
     AirBuffButton:SetWidth(button_size);
     AirBuffButton:SetHeight(button_size);
     AirBuffButton:SetPoint("LEFT", offset_x, 0);
@@ -1782,40 +1782,40 @@ end
 function UpdateEarthButtonIcon()
     getglobal("TeronTotemBar_Earth_Button"):SetNormalTexture(Earth_Totems[TeronTotemBar_Options.SavedTotemIndexes.Earth].icon);
     --hides the old buff buttons on the buff bar
-    EarthBuffButton:Hide();
-    FireBuffButton:Hide();
-    WaterBuffButton:Hide();
-    AirBuffButton:Hide();
+    getglobal("TeronTotemBuffBar_Earth_Icon"):Hide();
+    getglobal("TeronTotemBuffBar_Fire_Icon"):Hide();
+    getglobal("TeronTotemBuffBar_Water_Icon"):Hide();
+    getglobal("TeronTotemBuffBar_Air_Icon"):Hide();
     --creates the new buff buttons with the newly assigned totems
     CreateBuffButtons();
 end
 function UpdateFireButtonIcon()
     getglobal("TeronTotemBar_Fire_Button"):SetNormalTexture(Fire_Totems[TeronTotemBar_Options.SavedTotemIndexes.Fire].icon);
     --hides the old buff buttons on the buff bar
-    EarthBuffButton:Hide();
-    FireBuffButton:Hide();
-    WaterBuffButton:Hide();
-    AirBuffButton:Hide();
+    getglobal("TeronTotemBuffBar_Earth_Icon"):Hide();
+    getglobal("TeronTotemBuffBar_Fire_Icon"):Hide();
+    getglobal("TeronTotemBuffBar_Water_Icon"):Hide();
+    getglobal("TeronTotemBuffBar_Air_Icon"):Hide();
     --creates the new buff buttons with the newly assigned totems
     CreateBuffButtons();
 end
 function UpdateWaterButtonIcon()
     getglobal("TeronTotemBar_Water_Button"):SetNormalTexture(Water_Totems[TeronTotemBar_Options.SavedTotemIndexes.Water].icon);
     --hides the old buff buttons on the buff bar
-    EarthBuffButton:Hide();
-    FireBuffButton:Hide();
-    WaterBuffButton:Hide();
-    AirBuffButton:Hide();
+    getglobal("TeronTotemBuffBar_Earth_Icon"):Hide();
+    getglobal("TeronTotemBuffBar_Fire_Icon"):Hide();
+    getglobal("TeronTotemBuffBar_Water_Icon"):Hide();
+    getglobal("TeronTotemBuffBar_Air_Icon"):Hide();
     --creates the new buff buttons with the newly assigned totems
     CreateBuffButtons();
 end
 function UpdateAirButtonIcon()
     getglobal("TeronTotemBar_Air_Button"):SetNormalTexture(Air_Totems[TeronTotemBar_Options.SavedTotemIndexes.Air].icon);
     --hides the old buff buttons on the buff bar
-    EarthBuffButton:Hide();
-    FireBuffButton:Hide();
-    WaterBuffButton:Hide();
-    AirBuffButton:Hide();
+    ggetglobal("TeronTotemBuffBar_Earth_Icon"):Hide();
+    getglobal("TeronTotemBuffBar_Fire_Icon"):Hide();
+    getglobal("TeronTotemBuffBar_Water_Icon"):Hide();
+    getglobal("TeronTotemBuffBar_Air_Icon"):Hide();
     --creates the new buff buttons with the newly assigned totems
     CreateBuffButtons();
 end
