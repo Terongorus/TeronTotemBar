@@ -1,5 +1,8 @@
 <Bindings>
-    <Binding name="TERONTOTEMBAR_CAST_NEXT_ELEMENT_TOTEM" header="Teron Totem Bar">
+    <Binding name="Autocast Totems" header="Teron Totem Bar">
         AutoCastTotems()
+    </Binding>
+    <Binding name="Cast Totemic Recall" header="Teron Totem Bar">
+        TeronTotemBuffBar_Cast_TotemicRecall()
     </Binding>
 </Bindings>

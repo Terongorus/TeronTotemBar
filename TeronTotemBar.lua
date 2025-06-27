@@ -3,16 +3,18 @@ MAX_RAID_MEMBERS = 40;
 EMPTY_ICON = "Interface\\Buttons\\UI-GroupLoot-Pass-Up"
 
 --default values for the totem bar
-TTB_currentEarthTotemIndex = 1
-TTB_currentFireTotemIndex = 1
-TTB_currentWaterTotemIndex = 1
-TTB_currentAirTotemIndex = 1
+TTB_currentEarthTotemIndex = nil; --current index for the earth totem
+TTB_currentFireTotemIndex = nil; --current index for the fire totem
+TTB_currentWaterTotemIndex = nil; --current index for the water totem
+TTB_currentAirTotemIndex = nil; --current index for the air totem
 TTB_elementOrder = {"Earth", "Fire", "Water", "Air"}
 TTB_nextElementIndex = 1
 TTB_Self_Header_TextFrame = nil;
 TTB_general_offset = 150; --general offset for the totem bar
 TTB_Icons_Offset_X = 100;
 TTB_Icons_Offset_Y = 60;
+TTB_Weapon_Enhancement_Timer = nil; --timer for the weapon enhancement
+TTB_Current_Weapon_Enhancement = nil; --current weapon enhancement
 
 --default values for the totem bar
 TeronTotemBar_Options = {
@@ -61,8 +63,8 @@ TeronTotemBar_Options = {
         offset_y = 50,
     },
     BuffBar_Button_Handlers_Options = {
-        number_of_buttons = 5,
-        number_of_paddings = 6,
+        number_of_buttons = 6,
+        number_of_paddings = 7,
         button_width = 100,
         button_height = 40,
         offset_x = 5,
@@ -811,8 +813,9 @@ function CreateBuffButtonHolders()
             if Earth_Totems[TeronTotemBar_Options.SavedTotemIndexes.Earth].name == nil then
                 UIErrorsFrame:AddMessage("No Earth Totem Selected", 1, 0, 0, 1, 5);
             end
-            if (TTB_duration_Earth == 0 or TTB_duration_Earth == nil) and (TTB_cooldown_Earth == 0 or TTB_cooldown_Earth == nil) then
+            if ((TTB_duration_Earth == 0 or TTB_duration_Earth == nil) and (TTB_cooldown_Earth == 0 or TTB_cooldown_Earth == nil)) or TTB_currentEarthTotemIndex == TeronTotemBar_Options.SavedTotemIndexes.Earth then
                 CastSpellByName(Earth_Totems[TeronTotemBar_Options.SavedTotemIndexes.Earth].name);
+                TTB_currentEarthTotemIndex = TeronTotemBar_Options.SavedTotemIndexes.Earth;
                 TTB_duration_Earth = Earth_Totems[TeronTotemBar_Options.SavedTotemIndexes.Earth].duration;
             else
                 UIErrorsFrame:AddMessage("Earth Totem is already active or on cooldown!", 1, 0, 0, 1, 5);
@@ -847,8 +850,9 @@ function CreateBuffButtonHolders()
                 UIErrorsFrame:AddMessage("No Fire Totem Selected", 1, 0, 0, 1, 5);
                 return;
             end
-            if (TTB_duration_Fire == 0 or TTB_duration_Fire == nil) and (TTB_cooldown_Fire == 0 or TTB_cooldown_Fire == nil) then
+            if ((TTB_duration_Fire == 0 or TTB_duration_Fire == nil) and (TTB_cooldown_Fire == 0 or TTB_cooldown_Fire == nil)) or TTB_currentFireTotemIndex == TeronTotemBar_Options.SavedTotemIndexes.Fire then
                 CastSpellByName(Fire_Totems[TeronTotemBar_Options.SavedTotemIndexes.Fire].name);
+                TTB_currentFireTotemIndex = TeronTotemBar_Options.SavedTotemIndexes.Fire;
                 TTB_duration_Fire = Fire_Totems[TeronTotemBar_Options.SavedTotemIndexes.Fire].duration;
             else
                 UIErrorsFrame:AddMessage("Fire Totem is already active or on cooldown!", 1, 0, 0, 1, 5);
@@ -882,8 +886,9 @@ function CreateBuffButtonHolders()
                 UIErrorsFrame:AddMessage("No Water Totem Selected", 1, 0, 0, 1, 5);
                 return;
             end
-            if (TTB_duration_Water == 0 or TTB_duration_Water == nil) and (TTB_cooldown_Water == 0 or TTB_cooldown_Water == nil) then
+            if ((TTB_duration_Water == 0 or TTB_duration_Water == nil) and (TTB_cooldown_Water == 0 or TTB_cooldown_Water == nil)) or TTB_currentWaterTotemIndex == TeronTotemBar_Options.SavedTotemIndexes.Water then
                 CastSpellByName(Water_Totems[TeronTotemBar_Options.SavedTotemIndexes.Water].name);
+                TTB_currentWaterTotemIndex = TeronTotemBar_Options.SavedTotemIndexes.Water;
                 TTB_duration_Water = Water_Totems[TeronTotemBar_Options.SavedTotemIndexes.Water].duration;
             else
                 UIErrorsFrame:AddMessage("Water Totem is already active or on cooldown!", 1, 0, 0, 1, 5);
@@ -913,17 +918,17 @@ function CreateBuffButtonHolders()
             if TeronTotemBar_Options.TeronTotemBar_DebugMode == true then
                 print(arg1);
             end
-            if not Air_Totems[TeronTotemBar_Options.SavedTotemIndexes.Air].name == nil then
+            if Air_Totems[TeronTotemBar_Options.SavedTotemIndexes.Air].name == nil then
                 UIErrorsFrame:AddMessage("No Air Totem Selected", 1, 0, 0, 1, 5);
                 return;
             end
-            if (TTB_duration_Air == 0 or TTB_duration_Air == nil) and (TTB_cooldown_Air == 0 or TTB_cooldown_Air == nil) then
+            if ((TTB_duration_Air == 0 or TTB_duration_Air == nil) and (TTB_cooldown_Air == 0 or TTB_cooldown_Air == nil)) or TTB_currentAirTotemIndex == TeronTotemBar_Options.SavedTotemIndexes.Air then
                 CastSpellByName(Air_Totems[TeronTotemBar_Options.SavedTotemIndexes.Air].name);
+                TTB_currentAirTotemIndex = TeronTotemBar_Options.SavedTotemIndexes.Air;
                 TTB_duration_Air = Air_Totems[TeronTotemBar_Options.SavedTotemIndexes.Air].duration;
             else
                 UIErrorsFrame:AddMessage("Air Totem is already active or on cooldown!", 1, 0, 0, 1, 5);
             end
-            
         end
     end);
 
@@ -941,7 +946,7 @@ function CreateBuffButtonHolders()
         edgeSize = 16,
         insets = { left = d_insets, right = d_insets, top = d_insets, bottom = d_insets },
     });
-    TotemicRecallBuffButtonHolder:SetScript("OnClick", function()
+    TotemicRecallBuffButtonHolder:SetScript("OnClick", function ()
         if TeronTotemBar_Options.TeronTotemBar_DebugMode == true then
             print("Totemic Recall Buff Button Holder Clicked");
         end
@@ -972,6 +977,46 @@ function CreateBuffButtonHolders()
             end
         end
     end);
+
+    --Weapon Enhancement Buff Button Holder
+    WeaponEnhancementBuffButtonHolder = CreateFrame("Button", "TeronTotemBuffBar_WeaponEnhancement_ButtonHolder", TeronTotemBuffBarFrame);
+    WeaponEnhancementBuffButtonHolder:SetWidth(TeronTotemBar_Options.BuffBar_Button_Handlers_Options.button_width);
+    WeaponEnhancementBuffButtonHolder:SetHeight(TeronTotemBar_Options.BuffBar_Button_Handlers_Options.button_height);
+    WeaponEnhancementBuffButtonHolder:SetPoint("LEFT", TotemicRecallBuffButtonHolder, "RIGHT", TeronTotemBar_Options.BuffBar_Button_Handlers_Options.offset_x, 0);
+    WeaponEnhancementBuffButtonHolder:EnableMouse(true);
+    WeaponEnhancementBuffButtonHolder:SetBackdrop({
+        bgFile = "Interface\\Tooltips\\UI-Tooltip-Background",
+        edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
+        tile = true,
+        tileSize = 16,
+        edgeSize = 16,
+        insets = { left = d_insets, right = d_insets, top = d_insets, bottom = d_insets },
+    });
+    WeaponEnhancementBuffButtonHolder:SetScript("OnClick", function ()
+        if TeronTotemBar_Options.TeronTotemBar_DebugMode == true then
+            print("Weapon Enhancement Buff Button Holder Clicked");
+        end
+        if arg1 == "LeftButton" then
+            if TeronTotemBar_Options.TeronTotemBar_DebugMode == true then
+                print(arg1);
+            end
+            if WeaponEnhancements[TeronTotemBar_Options.SavedWeaponEnhancement].name == nil then
+                UIErrorsFrame:AddMessage("No Weapon Enhancement Selected", 1, 0, 0, 1, 5);
+                return;
+            end
+            if TTB_Current_Weapon_Enhancement ~= TeronTotemBar_Options.SavedWeaponEnhancement and (GetSpellCooldown(GetSpellByName(WeaponEnhancements[TeronTotemBar_Options.SavedWeaponEnhancement].name), BOOKTYPE_SPELL) == 0)  then
+                CastSpellByName(WeaponEnhancements[TeronTotemBar_Options.SavedWeaponEnhancement].name);
+                TTB_Current_Weapon_Enhancement = TeronTotemBar_Options.SavedWeaponEnhancement;
+                TTB_Weapon_Enhancement_Timer = WeaponEnhancements[TeronTotemBar_Options.SavedWeaponEnhancement].duration;
+                if TeronTotemBar_Options.TeronTotemBar_DebugMode == true then
+                    print("Weapon Enhancement set to: " .. WeaponEnhancements[TeronTotemBar_Options.SavedWeaponEnhancement].name);
+                    print("Weapon Enhancement duration: " .. WeaponEnhancements[TeronTotemBar_Options.SavedWeaponEnhancement].duration);
+                end
+            else
+                UIErrorsFrame:AddMessage("Weapon Enhancement is already active!", 1, 0, 0, 1, 5);
+            end
+        end
+    end)
 end
 
 --buff buttons (outside the main assignment frame)
@@ -1013,6 +1058,13 @@ function CreateBuffButtons()
     TotemicRecallBuffButton:SetHeight(button_size);
     TotemicRecallBuffButton:SetPoint("LEFT", offset_x, 0);
     TotemicRecallBuffButton:SetNormalTexture(recall_Totems[1].icon);
+
+    --Weapon Enhancement Button
+    WeaponEnhancementBuffButton = CreateFrame("Button", "TeronTotemBuffBar_WeaponEnhancement_Button", WeaponEnhancementBuffButtonHolder);
+    WeaponEnhancementBuffButton:SetWidth(button_size);
+    WeaponEnhancementBuffButton:SetHeight(button_size);
+    WeaponEnhancementBuffButton:SetPoint("LEFT", offset_x, 0);
+    WeaponEnhancementBuffButton:SetNormalTexture(WeaponEnhancements[TeronTotemBar_Options.SavedWeaponEnhancement].icon);
 end
 
 --creates the font strings for the duration tracking
@@ -1026,6 +1078,7 @@ function CreateDurationText()
     FireFontString = FireBuffButtonHolder:CreateFontString("TeronTotemBuffBar_Fire_ButtonHolder_Duration", "OVERLAY", "GameFontNormal");
     WaterFontString = WaterBuffButtonHolder:CreateFontString("TeronTotemBuffBar_Water_ButtonHolder_Duration", "OVERLAY", "GameFontNormal");
     AirFontString = AirBuffButtonHolder:CreateFontString("TeronTotemBuffBar_Air_ButtonHolder_Duration", "OVERLAY", "GameFontNormal");
+    WeaponEanhancementFontString = WeaponEnhancementBuffButtonHolder:CreateFontString("TeronTotemBuffBar_WeaponEnhancement_ButtonHolder_Duration", "OVERLAY", "GameFontNormal");
 
     --Earth Font String
     EarthFontString:SetPoint(anchor, EarthBuffButtonHolder, offset_x, offset_y);
@@ -1050,6 +1103,12 @@ function CreateDurationText()
     AirFontString:SetFont("Fonts\\FRIZQT__.TTF", 12, "OUTLINE");
     AirFontString:SetTextColor(1, 1, 1, 1); -- White color
     AirFontString:SetText("D: 0:00");
+
+    --Weapon Enhancement Font String
+    WeaponEanhancementFontString:SetPoint(anchor, WeaponEnhancementBuffButtonHolder, offset_x, 0);
+    WeaponEanhancementFontString:SetFont("Fonts\\FRIZQT__.TTF", 12, "OUTLINE");
+    WeaponEanhancementFontString:SetTextColor(1, 1, 1, 1); -- White color
+    WeaponEanhancementFontString:SetText("D: 0:00");
 end
 
 --creates the font strings for the cooldown tracker
@@ -1403,6 +1462,7 @@ function TeronTotemBuffBar_OnUpdate(arg1, arg2)
     getglobal("TeronTotemBuffBar_Fire_ButtonHolder"):SetBackdropColor(1, 0, 0, 1); -- Red if buff is not active
     getglobal("TeronTotemBuffBar_Water_ButtonHolder"):SetBackdropColor(1, 0, 0, 1); -- Red if buff is not active
     getglobal("TeronTotemBuffBar_Air_ButtonHolder"):SetBackdropColor(1, 0, 0, 1); -- Red if buff is not active
+    getglobal("TeronTotemBuffBar_WeaponEnhancement_ButtonHolder"):SetBackdropColor(1, 0, 0, 1); -- Red if buff is not active
 
     --check if the buff is active and color the button accordingly
     for TTB_index = 1, 40 do
@@ -1410,17 +1470,17 @@ function TeronTotemBuffBar_OnUpdate(arg1, arg2)
         if TeronTotemBar_Options.TeronTotemBar_DebugMode == true and TTB_buff then
             print("Checking Earth Totem Buff: " .. TTB_buff);
         end
-        if (TTB_buff and (TTB_buff == Earth_Totems[TeronTotemBar_Options.SavedTotemIndexes.Earth].icon)) or (TTB_duration_Earth ~= 0 and TTB_duration_Earth ~= nil) then
+        if (TTB_buff and TTB_buff == Earth_Totems[TeronTotemBar_Options.SavedTotemIndexes.Earth].icon and TTB_currentEarthTotemIndex == TeronTotemBar_Options.SavedTotemIndexes.Earth) or (TTB_duration_Earth ~= 0 and TTB_duration_Earth ~= nil) then
             getglobal("TeronTotemBuffBar_Earth_ButtonHolder"):SetBackdropColor(0, 1, 0, 1); -- Green if buff is active
         end
-        if TTB_buff and (TTB_buff == Fire_Totems[TeronTotemBar_Options.SavedTotemIndexes.Fire].icon) or (TTB_duration_Fire ~= 0 and TTB_duration_Fire ~= nil) then
+        if (TTB_buff and TTB_buff == Fire_Totems[TeronTotemBar_Options.SavedTotemIndexes.Fire].icon and TTB_currentFireTotemIndex == TeronTotemBar_Options.SavedTotemIndexes.Fire) or (TTB_duration_Fire ~= 0 and TTB_duration_Fire ~= nil) then
             getglobal("TeronTotemBuffBar_Fire_ButtonHolder"):SetBackdropColor(0, 1, 0, 1); -- Green if buff is active
 
         end
-        if TTB_buff and (TTB_buff == Water_Totems[TeronTotemBar_Options.SavedTotemIndexes.Water].icon) or (TTB_duration_Water ~= 0 and TTB_duration_Water ~= nil) then
+        if (TTB_buff and TTB_buff == Water_Totems[TeronTotemBar_Options.SavedTotemIndexes.Water].icon and TTB_currentWaterTotemIndex == TeronTotemBar_Options.SavedTotemIndexes.Water) or (TTB_duration_Water ~= 0 and TTB_duration_Water ~= nil) then
             getglobal("TeronTotemBuffBar_Water_ButtonHolder"):SetBackdropColor(0, 1, 0, 1); -- Green if buff is active
         end
-        if TTB_buff and (TTB_buff == Air_Totems[TeronTotemBar_Options.SavedTotemIndexes.Air].icon) or (TTB_duration_Air ~= 0 and TTB_duration_Air ~= nil) then
+        if (TTB_buff and TTB_buff == Air_Totems[TeronTotemBar_Options.SavedTotemIndexes.Air].icon and TTB_currentAirTotemIndex == TeronTotemBar_Options.SavedTotemIndexes.Air) or (TTB_duration_Air ~= 0 and TTB_duration_Air ~= nil) then
             getglobal("TeronTotemBuffBar_Air_ButtonHolder"):SetBackdropColor(0, 1, 0, 1); -- Green if buff is active
         end
         if not TTB_buff then
@@ -1428,37 +1488,52 @@ function TeronTotemBuffBar_OnUpdate(arg1, arg2)
         end
     end
 
+    --update the colour for the weapon enhancement button
+    if TTB_Current_Weapon_Enhancement == TeronTotemBar_Options.SavedWeaponEnhancement and (TTB_duration_WeaponEnhancement ~= 0 and TTB_duration_WeaponEnhancement ~= nil) then
+        getglobal("TeronTotemBuffBar_WeaponEnhancement_ButtonHolder"):SetBackdropColor(0, 1, 0, 1); -- Green if buff is active
+    else
+        getglobal("TeronTotemBuffBar_WeaponEnhancement_ButtonHolder"):SetBackdropColor(1, 0, 0, 1); -- Red if buff is not active
+    end
+
     --update the duration text for each totem
-    if TTB_duration_Earth then
+    if TTB_duration_Earth and TTB_currentEarthTotemIndex then
         TTB_duration_Earth = TTB_duration_Earth - arg1;
         getglobal("TeronTotemBuffBar_Earth_ButtonHolder_Duration"):SetText("D: " .. FormatTime(TTB_duration_Earth));
-        if TTB_duration_Earth <= 0 then
+        if TTB_duration_Earth <= 0 or TTB_currentEarthTotemIndex ~= TeronTotemBar_Options.SavedTotemIndexes.Earth then
             getglobal("TeronTotemBuffBar_Earth_ButtonHolder_Duration"):SetText("D: 0:00");
             TTB_duration_Earth = nil; -- Reset the duration if it reaches zero
         end
     end
-    if TTB_duration_Fire then
+    if TTB_duration_Fire and TTB_currentFireTotemIndex then
         TTB_duration_Fire = TTB_duration_Fire - arg1;
         getglobal("TeronTotemBuffBar_Fire_ButtonHolder_Duration"):SetText("D: " .. FormatTime(TTB_duration_Fire));
-        if TTB_duration_Fire <= 0 then
+        if TTB_duration_Fire <= 0 or TTB_currentFireTotemIndex ~= TeronTotemBar_Options.SavedTotemIndexes.Fire then
             getglobal("TeronTotemBuffBar_Fire_ButtonHolder_Duration"):SetText("D: 0:00");
             TTB_duration_Fire = nil; -- Reset the duration if it reaches zero
         end
     end
-    if TTB_duration_Water then
+    if TTB_duration_Water and TTB_currentWaterTotemIndex then
         TTB_duration_Water = TTB_duration_Water - arg1;
         getglobal("TeronTotemBuffBar_Water_ButtonHolder_Duration"):SetText("D: " .. FormatTime(TTB_duration_Water));
-        if TTB_duration_Water <= 0 then
+        if TTB_duration_Water <= 0 or TTB_currentWaterTotemIndex ~= TeronTotemBar_Options.SavedTotemIndexes.Water then
             getglobal("TeronTotemBuffBar_Water_ButtonHolder_Duration"):SetText("D: 0:00");
             TTB_duration_Water = nil; -- Reset the duration if it reaches zero
         end
     end
-    if TTB_duration_Air then
+    if TTB_duration_Air and TTB_currentAirTotemIndex then
         TTB_duration_Air = TTB_duration_Air - arg1;
         getglobal("TeronTotemBuffBar_Air_ButtonHolder_Duration"):SetText("D: " .. FormatTime(TTB_duration_Air));
-        if TTB_duration_Air <= 0 then
+        if TTB_duration_Air <= 0 or TTB_currentAirTotemIndex ~= TeronTotemBar_Options.SavedTotemIndexes.Air then
             getglobal("TeronTotemBuffBar_Air_ButtonHolder_Duration"):SetText("D: 0:00");
             TTB_duration_Air = nil; -- Reset the duration if it reaches zero
+        end
+    end
+    if TTB_duration_WeaponEnhancement and TTB_Current_Weapon_Enhancement then
+        TTB_duration_WeaponEnhancement = TTB_duration_WeaponEnhancement - arg1;
+        getglobal("TeronTotemBuffBar_WeaponEnhancement_ButtonHolder_Duration"):SetText("D: " .. FormatTime(TTB_duration_WeaponEnhancement));
+        if TTB_duration_WeaponEnhancement <= 0 or TTB_Current_Weapon_Enhancement ~= TeronTotemBar_Options.SavedWeaponEnhancement then
+            getglobal("TeronTotemBuffBar_WeaponEnhancement_ButtonHolder_Duration"):SetText("D: 0:00");
+            TTB_duration_WeaponEnhancement = nil; -- Reset the duration if it reaches zero
         end
     end
 
@@ -1555,6 +1630,34 @@ function TeronTotemBuffBar_OnUpdate(arg1, arg2)
         --print("Magma Totem Duration: " .. (TTB_MagmaTotemDuration or "nil"));
     end
 end
+
+function TeronTotemBuffBar_Cast_TotemicRecall()
+    if TeronTotemBar_Options.TeronTotemBar_DebugMode == true then
+        print("Totemic Recall Buff Button Holder Clicked");
+    end
+    if (TTB_recall_totem_CD == 0 or TTB_recall_totem_CD == nil) and (GetSpellCooldown(GetSpellByName(recall_Totems[1].name), BOOKTYPE_SPELL) == 0) then
+        CastSpellByName(recall_Totems[1].name);
+        TTB_recall_totem_CD = recall_Totems[1].cooldown + 1; -- Add 1 second to cooldown to avoid issues with the spell not being ready immediately
+    
+        TTB_duration_Earth = nil; -- Reset Earth Totem duration
+        --TTB_cooldown_Earth = nil; -- Reset Earth Totem cooldown
+        getglobal("TeronTotemBuffBar_Earth_ButtonHolder_Duration"):SetText("D: 0:00"); -- Reset Earth Font String
+        --EarthCooldownText:SetText("CD: 0"); -- Reset Earth Cooldown Text
+        TTB_duration_Fire = nil; -- Reset Fire Totem duration
+        --TTB_cooldown_Fire = nil; -- Reset Fire Totem cooldown
+        getglobal("TeronTotemBuffBar_Fire_ButtonHolder_Duration"):SetText("D: 0:00"); -- Reset Fire Font String
+        --FireCooldownText:SetText("CD: 0"); -- Reset Fire Cooldown Text
+        TTB_duration_Water = nil; -- Reset Water Totem duration
+        --TTB_cooldown_Water = nil; -- Reset Water Totem cooldown
+        getglobal("TeronTotemBuffBar_Water_ButtonHolder_Duration"):SetText("D: 0:00"); -- Reset Water Font String
+        --WaterCooldownText:SetText("CD: 0"); -- Reset Water Cooldown Text
+        TTB_duration_Air = nil; -- Reset Air Totem duration
+        --TTB_cooldown_Air = nil; -- Reset Air Totem cooldown
+        getglobal("TeronTotemBuffBar_Air_ButtonHolder_Duration"):SetText("D: 0:00"); -- Reset Air Font String
+        --AirCooldownText:SetText("CD: 0"); -- Reset Air Cooldown Text
+    end
+end
+
 --END OF EVENT HANDLER FOR THE BUFF BAR FRAME
 
 --SLASH COMMANDS HANDLER
@@ -1800,7 +1903,7 @@ end
 
 function AutoCastTotems()
     DoEmote("stand"); -- Emote to eliminate the bug which occurs when casting totems while sitting
-    SpellStopCasting(); -- Stop any ongoing spell casting to ensure totems are cast immediately
+    --SpellStopCasting(); -- Stop any ongoing spell casting to ensure totems are cast immediately
 
     --cast Earth Totem
     if TTB_globalCD == 0 and Earth_Totems[TeronTotemBar_Options.SavedTotemIndexes.Earth].name then
@@ -1849,6 +1952,7 @@ function AutoCastTotems()
             UIErrorsFrame:AddMessage("Air Totem is already active or on cooldown!", 1, 0, 0, 1, 5);
         end
     end
+    TargetLastEnemy();
     if TeronTotemBar_Options.TeronTotemBar_DebugMode == true then
         print("TeronTotemBar: Auto casting totems.");
     end
@@ -1857,7 +1961,7 @@ end
 --Stoneclaw Totem + Magma Totem (with cooldown/duration check)
 function CastStoneMagma()
     DoEmote("stand"); -- Emote to eliminate the bug which occurs when casting totems while sitting
-    SpellStopCasting(); -- Stop any ongoing spell casting to ensure totems are cast immediately
+    --SpellStopCasting(); -- Stop any ongoing spell casting to ensure totems are cast immediately
 
     if TeronTotemBar_Options.TeronTotemBar_DebugMode == true then
         print(FormatTime(TTB_MagmaTotemDuration));
@@ -1886,4 +1990,5 @@ function CastStoneMagma()
             end
         end
     end
+    TargetLastEnemy();
 end
