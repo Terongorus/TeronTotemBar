@@ -2,6 +2,12 @@
 An addon that displays a totem bar and can also be used to assign totems to all shamans in your party/raid.
 
 ## Change Log
+### V1.2.1
+- Once again the Buff Bar frame has been adjusted to accommodate the new Weapon Enhancement Buff Button
+- Fixed some bugs with the Autocast Totem function of the addon
+- Improved the keybinds for better accessibility and visibility
+- Added a new keybind for Totemic Recall
+- Improved the Buff Bar Totem aura tracker (if you change the assigned totems in the assignment frame the buff buttons should appear red, unless the totems cast match the totems assigned)
 ### V1.2.0
 - Fixed the frames, they should show up properly now on any client
 - Added a new and improved assignement frame with better visibility and a proper close button
