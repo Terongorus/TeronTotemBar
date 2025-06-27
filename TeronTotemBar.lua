@@ -813,10 +813,15 @@ function CreateBuffButtonHolders()
             if Earth_Totems[TeronTotemBar_Options.SavedTotemIndexes.Earth].name == nil then
                 UIErrorsFrame:AddMessage("No Earth Totem Selected", 1, 0, 0, 1, 5);
             end
-            if ((TTB_duration_Earth == 0 or TTB_duration_Earth == nil) and (TTB_cooldown_Earth == 0 or TTB_cooldown_Earth == nil)) or TTB_currentEarthTotemIndex == TeronTotemBar_Options.SavedTotemIndexes.Earth then
+            if ((TTB_duration_Earth == 0 or TTB_duration_Earth == nil) and (TTB_cooldown_Earth == 0 or TTB_cooldown_Earth == nil) and GetSpellCooldown(GetSpellByName(Earth_Totems[TeronTotemBar_Options.SavedTotemIndexes.Earth].name), BOOKTYPE_SPELL) == 0) or TTB_currentEarthTotemIndex == TeronTotemBar_Options.SavedTotemIndexes.Earth then
                 CastSpellByName(Earth_Totems[TeronTotemBar_Options.SavedTotemIndexes.Earth].name);
                 TTB_currentEarthTotemIndex = TeronTotemBar_Options.SavedTotemIndexes.Earth;
                 TTB_duration_Earth = Earth_Totems[TeronTotemBar_Options.SavedTotemIndexes.Earth].duration;
+                if TeronTotemBar_Options.TeronTotemBar_DebugMode == true then
+                    print("Casting Earth Totem: " .. Earth_Totems[TeronTotemBar_Options.SavedTotemIndexes.Earth].name);
+                    print("Earth Totem Duration: " .. Earth_Totems[TeronTotemBar_Options.SavedTotemIndexes.Earth].duration);
+                    print("Earth Totem Cooldown: " .. Earth_Totems[TeronTotemBar_Options.SavedTotemIndexes.Earth].cooldown);
+                end
             else
                 UIErrorsFrame:AddMessage("Earth Totem is already active or on cooldown!", 1, 0, 0, 1, 5);
             end
@@ -850,10 +855,15 @@ function CreateBuffButtonHolders()
                 UIErrorsFrame:AddMessage("No Fire Totem Selected", 1, 0, 0, 1, 5);
                 return;
             end
-            if ((TTB_duration_Fire == 0 or TTB_duration_Fire == nil) and (TTB_cooldown_Fire == 0 or TTB_cooldown_Fire == nil)) or TTB_currentFireTotemIndex == TeronTotemBar_Options.SavedTotemIndexes.Fire then
+            if ((TTB_duration_Fire == 0 or TTB_duration_Fire == nil) and (TTB_cooldown_Fire == 0 or TTB_cooldown_Fire == nil) and GetSpellCooldown(GetSpellByName(Fire_Totems[TeronTotemBar_Options.SavedTotemIndexes.Fire].name), BOOKTYPE_SPELL) == 0) or TTB_currentFireTotemIndex == TeronTotemBar_Options.SavedTotemIndexes.Fire then
                 CastSpellByName(Fire_Totems[TeronTotemBar_Options.SavedTotemIndexes.Fire].name);
                 TTB_currentFireTotemIndex = TeronTotemBar_Options.SavedTotemIndexes.Fire;
                 TTB_duration_Fire = Fire_Totems[TeronTotemBar_Options.SavedTotemIndexes.Fire].duration;
+                if TeronTotemBar_Options.TeronTotemBar_DebugMode == true then
+                    print("Casting Fire Totem: " .. Fire_Totems[TeronTotemBar_Options.SavedTotemIndexes.Fire].name);
+                    print("Fire Totem Duration: " .. Fire_Totems[TeronTotemBar_Options.SavedTotemIndexes.Fire].duration);
+                    print("Fire Totem Cooldown: " .. Fire_Totems[TeronTotemBar_Options.SavedTotemIndexes.Fire].cooldown);
+                end
             else
                 UIErrorsFrame:AddMessage("Fire Totem is already active or on cooldown!", 1, 0, 0, 1, 5);
             end
@@ -886,10 +896,15 @@ function CreateBuffButtonHolders()
                 UIErrorsFrame:AddMessage("No Water Totem Selected", 1, 0, 0, 1, 5);
                 return;
             end
-            if ((TTB_duration_Water == 0 or TTB_duration_Water == nil) and (TTB_cooldown_Water == 0 or TTB_cooldown_Water == nil)) or TTB_currentWaterTotemIndex == TeronTotemBar_Options.SavedTotemIndexes.Water then
+            if ((TTB_duration_Water == 0 or TTB_duration_Water == nil) and (TTB_cooldown_Water == 0 or TTB_cooldown_Water == nil) and GetSpellCooldown(GetSpellByName(Water_Totems[TeronTotemBar_Options.SavedTotemIndexes.Water].name), BOOKTYPE_SPELL) == 0) or TTB_currentWaterTotemIndex == TeronTotemBar_Options.SavedTotemIndexes.Water then
                 CastSpellByName(Water_Totems[TeronTotemBar_Options.SavedTotemIndexes.Water].name);
                 TTB_currentWaterTotemIndex = TeronTotemBar_Options.SavedTotemIndexes.Water;
                 TTB_duration_Water = Water_Totems[TeronTotemBar_Options.SavedTotemIndexes.Water].duration;
+                if TeronTotemBar_Options.TeronTotemBar_DebugMode == true then
+                    print("Casting Water Totem: " .. Water_Totems[TeronTotemBar_Options.SavedTotemIndexes.Water].name);
+                    print("Water Totem Duration: " .. Water_Totems[TeronTotemBar_Options.SavedTotemIndexes.Water].duration);
+                    print("Water Totem Cooldown: " .. Water_Totems[TeronTotemBar_Options.SavedTotemIndexes.Water].cooldown);
+                end
             else
                 UIErrorsFrame:AddMessage("Water Totem is already active or on cooldown!", 1, 0, 0, 1, 5);
             end
@@ -922,10 +937,15 @@ function CreateBuffButtonHolders()
                 UIErrorsFrame:AddMessage("No Air Totem Selected", 1, 0, 0, 1, 5);
                 return;
             end
-            if ((TTB_duration_Air == 0 or TTB_duration_Air == nil) and (TTB_cooldown_Air == 0 or TTB_cooldown_Air == nil)) or TTB_currentAirTotemIndex == TeronTotemBar_Options.SavedTotemIndexes.Air then
+            if ((TTB_duration_Air == 0 or TTB_duration_Air == nil) and (TTB_cooldown_Air == 0 or TTB_cooldown_Air == nil) and GetSpellCooldown(GetSpellByName(Air_Totems[TeronTotemBar_Options.SavedVariables.Air].name), BOOKTYPE_SPELL) == 0) or TTB_currentAirTotemIndex == TeronTotemBar_Options.SavedTotemIndexes.Air then
                 CastSpellByName(Air_Totems[TeronTotemBar_Options.SavedTotemIndexes.Air].name);
                 TTB_currentAirTotemIndex = TeronTotemBar_Options.SavedTotemIndexes.Air;
                 TTB_duration_Air = Air_Totems[TeronTotemBar_Options.SavedTotemIndexes.Air].duration;
+                if TeronTotemBar_Options.TeronTotemBar_DebugMode == true then
+                    print("Casting Air Totem: " .. Air_Totems[TeronTotemBar_Options.SavedTotemIndexes.Air].name);
+                    print("Air Totem Duration: " .. Air_Totems[TeronTotemBar_Options.SavedTotemIndexes.Air].duration);
+                    print("Air Totem Cooldown: " .. Air_Totems[TeronTotemBar_Options.SavedTotemIndexes.Air].cooldown);
+                end
             else
                 UIErrorsFrame:AddMessage("Air Totem is already active or on cooldown!", 1, 0, 0, 1, 5);
             end
