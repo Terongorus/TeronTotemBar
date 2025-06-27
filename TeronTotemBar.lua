@@ -1927,7 +1927,7 @@ function AutoCastTotems()
 
     --cast Earth Totem
     if TTB_globalCD == 0 and Earth_Totems[TeronTotemBar_Options.SavedTotemIndexes.Earth].name then
-        if (TTB_duration_Earth == 0 or TTB_duration_Earth == nil) and (TTB_cooldown_Earth == 0 or TTB_cooldown_Earth == nil) then
+        if ((TTB_duration_Earth == 0 or TTB_duration_Earth == nil) and (TTB_cooldown_Earth == 0 or TTB_cooldown_Earth == nil) and GetSpellCooldown(GetSpellByName(Earth_Totems[TeronTotemBar_Options.SavedTotemIndexes.Earth].name), BOOKTYPE_SPELL) == 0) or TTB_currentEarthTotemIndex ~= TeronTotemBar_Options.SavedTotemIndexes.Earth then
             CastSpellByName(Earth_Totems[TeronTotemBar_Options.SavedTotemIndexes.Earth].name);
             TTB_duration_Earth = Earth_Totems[TeronTotemBar_Options.SavedTotemIndexes.Earth].duration;
             TTB_cooldown_Earth = Earth_Totems[TeronTotemBar_Options.SavedTotemIndexes.Earth].cooldown;
@@ -1939,7 +1939,7 @@ function AutoCastTotems()
 
     --cast Fire Totem (check if the previous totem is still under global cooldown)
     if TTB_globalCD == 0 and Fire_Totems[TeronTotemBar_Options.SavedTotemIndexes.Fire].name then
-        if (TTB_duration_Fire == 0 or TTB_duration_Fire == nil) and (TTB_cooldown_Fire == 0 or TTB_cooldown_Fire == nil) then
+        if ((TTB_duration_Fire == 0 or TTB_duration_Fire == nil) and (TTB_cooldown_Fire == 0 or TTB_cooldown_Fire == nil) and GetSpellCooldown(GetSpellByName(Fire_Totems[TeronTotemBar_Options.SavedTotemIndexes.Fire].name), BOOKTYPE_SPELL) == 0) or TTB_currentFireTotemIndex ~= TeronTotemBar_Options.SavedTotemIndexes.Fire then
             CastSpellByName(Fire_Totems[TeronTotemBar_Options.SavedTotemIndexes.Fire].name);
             TTB_duration_Fire = Fire_Totems[TeronTotemBar_Options.SavedTotemIndexes.Fire].duration;
             TTB_cooldown_Fire = Fire_Totems[TeronTotemBar_Options.SavedTotemIndexes.Fire].cooldown;
@@ -1951,7 +1951,7 @@ function AutoCastTotems()
 
     --cast Water Totem (check if the previous totem is still under global cooldown)
     if TTB_globalCD == 0 and Water_Totems[TeronTotemBar_Options.SavedTotemIndexes.Water].name then
-        if (TTB_duration_Water == 0 or TTB_duration_Water == nil) and (TTB_cooldown_Water == 0 or TTB_cooldown_Water == nil) then
+        if ((TTB_duration_Water == 0 or TTB_duration_Water == nil) and (TTB_cooldown_Water == 0 or TTB_cooldown_Water == nil) and GetSpellCooldown(GetSpellByName(Water_Totems[TeronTotemBar_Options.SavedTotemIndexes.Water].name), BOOKTYPE_SPELL) == 0) or TTB_currentWaterTotemIndex ~= TeronTotemBar_Options.SavedTotemIndexes.Water then
             CastSpellByName(Water_Totems[TeronTotemBar_Options.SavedTotemIndexes.Water].name);
             TTB_duration_Water = Water_Totems[TeronTotemBar_Options.SavedTotemIndexes.Water].duration;
             TTB_cooldown_Water = Water_Totems[TeronTotemBar_Options.SavedTotemIndexes.Water].cooldown;
@@ -1963,7 +1963,7 @@ function AutoCastTotems()
 
     --cast Air Totem (check if the previous totem is still under global cooldown)
     if TTB_globalCD == 0 and Air_Totems[TeronTotemBar_Options.SavedTotemIndexes.Air].name then
-        if (TTB_duration_Air == 0 or TTB_duration_Air == nil) and (TTB_cooldown_Air == 0 or TTB_cooldown_Air == nil) then
+        if ((TTB_duration_Air == 0 or TTB_duration_Air == nil) and (TTB_cooldown_Air == 0 or TTB_cooldown_Air == nil) and GetSpellCooldown(GetSpellByName(Air_Totems[TeronTotemBar_Options.SavedVariables.Air].name), BOOKTYPE_SPELL) == 0) or TTB_currentAirTotemIndex ~= TeronTotemBar_Options.SavedTotemIndexes.Air then
             CastSpellByName(Air_Totems[TeronTotemBar_Options.SavedTotemIndexes.Air].name);
             TTB_duration_Air = Air_Totems[TeronTotemBar_Options.SavedTotemIndexes.Air].duration;
             TTB_cooldown_Air = Air_Totems[TeronTotemBar_Options.SavedTotemIndexes.Air].cooldown;
