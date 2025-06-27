@@ -1812,7 +1812,7 @@ end
 function UpdateAirButtonIcon()
     getglobal("TeronTotemBar_Air_Button"):SetNormalTexture(Air_Totems[TeronTotemBar_Options.SavedTotemIndexes.Air].icon);
     --hides the old buff buttons on the buff bar
-    ggetglobal("TeronTotemBuffBar_Earth_Icon"):Hide();
+    getglobal("TeronTotemBuffBar_Earth_Icon"):Hide();
     getglobal("TeronTotemBuffBar_Fire_Icon"):Hide();
     getglobal("TeronTotemBuffBar_Water_Icon"):Hide();
     getglobal("TeronTotemBuffBar_Air_Icon"):Hide();
