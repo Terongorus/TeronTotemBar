@@ -1565,7 +1565,7 @@ function TeronTotemBuffBar_OnUpdate(arg1, arg2)
     if TTB_cooldown_Earth then
         TTB_cooldown_Earth = TTB_cooldown_Earth - arg1;
         getglobal("TeronTotemBuffBar_Earth_ButtonHolder_Cooldown"):SetText("CD: " .. FormatTimeSeconds(TTB_cooldown_Earth));
-        if TTB_cooldown_Earth <= 0 then
+        if TTB_cooldown_Earth <= 0 or TTB_currentEarthTotemIndex ~= TeronTotemBar_Options.SavedTotemIndexes.Earth then
             getglobal("TeronTotemBuffBar_Earth_ButtonHolder_Cooldown"):SetText("CD: 0");
             TTB_cooldown_Earth = nil; -- Reset the cooldown if it reaches zero
         end
@@ -1573,7 +1573,7 @@ function TeronTotemBuffBar_OnUpdate(arg1, arg2)
     if TTB_cooldown_Fire then
         TTB_cooldown_Fire = TTB_cooldown_Fire - arg1;
         getglobal("TeronTotemBuffBar_Fire_ButtonHolder_Cooldown"):SetText("CD: " .. FormatTimeSeconds(TTB_cooldown_Fire));
-        if TTB_cooldown_Fire <= 0 then
+        if TTB_cooldown_Fire <= 0 or TTB_currentFireTotemIndex ~= TeronTotemBar_Options.SavedTotemIndexes.Fire then
             getglobal("TeronTotemBuffBar_Fire_ButtonHolder_Cooldown"):SetText("CD: 0");
             TTB_cooldown_Fire = nil; -- Reset the cooldown if it reaches zero
         end
@@ -1581,7 +1581,7 @@ function TeronTotemBuffBar_OnUpdate(arg1, arg2)
     if TTB_cooldown_Water then
         TTB_cooldown_Water = TTB_cooldown_Water - arg1;
         getglobal("TeronTotemBuffBar_Water_ButtonHolder_Cooldown"):SetText("CD: " .. FormatTimeSeconds(TTB_cooldown_Water));
-        if TTB_cooldown_Water <= 0 then
+        if TTB_cooldown_Water <= 0 or TTB_currentWaterTotemIndex ~= TeronTotemBar_Options.SavedTotemIndexes.Water then
             getglobal("TeronTotemBuffBar_Water_ButtonHolder_Cooldown"):SetText("CD: 0");
             TTB_cooldown_Water = nil; -- Reset the cooldown if it reaches zero
         end
@@ -1589,7 +1589,7 @@ function TeronTotemBuffBar_OnUpdate(arg1, arg2)
     if TTB_cooldown_Air then
         TTB_cooldown_Air = TTB_cooldown_Air - arg1;
         getglobal("TeronTotemBuffBar_Air_ButtonHolder_Cooldown"):SetText("CD: " .. FormatTimeSeconds(TTB_cooldown_Air));
-        if TTB_cooldown_Air <= 0 then
+        if TTB_cooldown_Air <= 0 or TTB_currentAirTotemIndex ~= TeronTotemBar_Options.SavedTotemIndexes.Air then
             getglobal("TeronTotemBuffBar_Air_ButtonHolder_Cooldown"):SetText("CD: 0");
             TTB_cooldown_Air = nil; -- Reset the cooldown if it reaches zero
         end
