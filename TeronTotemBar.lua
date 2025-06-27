@@ -937,7 +937,7 @@ function CreateBuffButtonHolders()
                 UIErrorsFrame:AddMessage("No Air Totem Selected", 1, 0, 0, 1, 5);
                 return;
             end
-            if ((TTB_duration_Air == 0 or TTB_duration_Air == nil) and (TTB_cooldown_Air == 0 or TTB_cooldown_Air == nil) and GetSpellCooldown(GetSpellByName(Air_Totems[TeronTotemBar_Options.SavedVariables.Air].name), BOOKTYPE_SPELL) == 0) or TTB_currentAirTotemIndex == TeronTotemBar_Options.SavedTotemIndexes.Air then
+            if ((TTB_duration_Air == 0 or TTB_duration_Air == nil) and (TTB_cooldown_Air == 0 or TTB_cooldown_Air == nil) and GetSpellCooldown(GetSpellByName(Air_Totems[TeronTotemBar_Options.SavedTotemIndexes.Air].name), BOOKTYPE_SPELL) == 0) or TTB_currentAirTotemIndex == TeronTotemBar_Options.SavedTotemIndexes.Air then
                 CastSpellByName(Air_Totems[TeronTotemBar_Options.SavedTotemIndexes.Air].name);
                 TTB_currentAirTotemIndex = TeronTotemBar_Options.SavedTotemIndexes.Air;
                 TTB_duration_Air = Air_Totems[TeronTotemBar_Options.SavedTotemIndexes.Air].duration;
@@ -1963,7 +1963,7 @@ function AutoCastTotems()
 
     --cast Air Totem (check if the previous totem is still under global cooldown)
     if TTB_globalCD == 0 and Air_Totems[TeronTotemBar_Options.SavedTotemIndexes.Air].name then
-        if ((TTB_duration_Air == 0 or TTB_duration_Air == nil) and (TTB_cooldown_Air == 0 or TTB_cooldown_Air == nil) and GetSpellCooldown(GetSpellByName(Air_Totems[TeronTotemBar_Options.SavedVariables.Air].name), BOOKTYPE_SPELL) == 0) or TTB_currentAirTotemIndex ~= TeronTotemBar_Options.SavedTotemIndexes.Air then
+        if ((TTB_duration_Air == 0 or TTB_duration_Air == nil) and (TTB_cooldown_Air == 0 or TTB_cooldown_Air == nil) and GetSpellCooldown(GetSpellByName(Air_Totems[TeronTotemBar_Options.SavedTotemIndexes.Air].name), BOOKTYPE_SPELL) == 0) or TTB_currentAirTotemIndex ~= TeronTotemBar_Options.SavedTotemIndexes.Air then
             CastSpellByName(Air_Totems[TeronTotemBar_Options.SavedTotemIndexes.Air].name);
             TTB_duration_Air = Air_Totems[TeronTotemBar_Options.SavedTotemIndexes.Air].duration;
             TTB_cooldown_Air = Air_Totems[TeronTotemBar_Options.SavedTotemIndexes.Air].cooldown;
