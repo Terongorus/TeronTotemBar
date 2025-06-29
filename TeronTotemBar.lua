@@ -661,7 +661,15 @@ function CreateElementButtons()
         if TeronTotemBar_Options.TeronTotemBar_DebugMode == true then
             print("TERONSTORM EARTH TOTEM INDEX: " .. TeronTotemBar_Options.SavedTotemIndexes.Earth);
         end
-        UpdateEarthButtonIcon();
+        --UpdateEarthButtonIcon();
+        getglobal("TeronTotemBar_Earth_Button"):SetNormalTexture(Earth_Totems[TeronTotemBar_Options.SavedTotemIndexes.Earth].icon);
+        --hides the old buff buttons on the buff bar
+        getglobal("TeronTotemBuffBar_Earth_Icon"):Hide();
+        getglobal("TeronTotemBuffBar_Fire_Icon"):Hide();
+        getglobal("TeronTotemBuffBar_Water_Icon"):Hide();
+        getglobal("TeronTotemBuffBar_Air_Icon"):Hide();
+        --creates the new buff buttons with the newly assigned totems
+        CreateBuffButtons();
     end);
 
     --Fire Button
@@ -691,7 +699,15 @@ function CreateElementButtons()
         if TeronTotemBar_Options.TeronTotemBar_DebugMode == true then
             print("TERONSTORM FIRE TOTEM INDEX: " .. TeronTotemBar_Options.SavedTotemIndexes.Fire);
         end
-        UpdateFireButtonIcon();
+        --UpdateFireButtonIcon();
+        getglobal("TeronTotemBar_Fire_Button"):SetNormalTexture(Fire_Totems[TeronTotemBar_Options.SavedTotemIndexes.Fire].icon);
+        --hides the old buff buttons on the buff bar
+        getglobal("TeronTotemBuffBar_Earth_Icon"):Hide();
+        getglobal("TeronTotemBuffBar_Fire_Icon"):Hide();
+        getglobal("TeronTotemBuffBar_Water_Icon"):Hide();
+        getglobal("TeronTotemBuffBar_Air_Icon"):Hide();
+        --creates the new buff buttons with the newly assigned totems
+        CreateBuffButtons();
     end);
 
     --Water Button
@@ -720,7 +736,15 @@ function CreateElementButtons()
         if TeronTotemBar_Options.TeronTotemBar_DebugMode == true then
             print("TERONSTORM WATER TOTEM INDEX: " .. TeronTotemBar_Options.SavedTotemIndexes.Water);
         end
-        UpdateWaterButtonIcon();
+        --UpdateWaterButtonIcon();
+        getglobal("TeronTotemBar_Water_Button"):SetNormalTexture(Water_Totems[TeronTotemBar_Options.SavedTotemIndexes.Water].icon);
+        --hides the old buff buttons on the buff bar
+        getglobal("TeronTotemBuffBar_Earth_Icon"):Hide();
+        getglobal("TeronTotemBuffBar_Fire_Icon"):Hide();
+        getglobal("TeronTotemBuffBar_Water_Icon"):Hide();
+        getglobal("TeronTotemBuffBar_Air_Icon"):Hide();
+        --creates the new buff buttons with the newly assigned totems
+        CreateBuffButtons();
     end);
 
     --Air Button
@@ -749,7 +773,15 @@ function CreateElementButtons()
         if TeronTotemBar_Options.TeronTotemBar_DebugMode == true then
             print("TERONSTORM AIR TOTEM INDEX: " .. TeronTotemBar_Options.SavedTotemIndexes.Air);
         end
-        UpdateAirButtonIcon();
+        --UpdateAirButtonIcon();
+        getglobal("TeronTotemBar_Air_Button"):SetNormalTexture(Air_Totems[TeronTotemBar_Options.SavedTotemIndexes.Air].icon);
+        --hides the old buff buttons on the buff bar
+        getglobal("TeronTotemBuffBar_Earth_Icon"):Hide();
+        getglobal("TeronTotemBuffBar_Fire_Icon"):Hide();
+        getglobal("TeronTotemBuffBar_Water_Icon"):Hide();
+        getglobal("TeronTotemBuffBar_Air_Icon"):Hide();
+        --creates the new buff buttons with the newly assigned totems
+        CreateBuffButtons();
     end);
     
     --Weapon Enhancement Button
