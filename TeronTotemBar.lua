@@ -812,7 +812,7 @@ function CreateElementButtons()
         --UpdateWeaponEnhancementButtonIcon();
         --hides the old buff buttons on the buff bar
         getglobal("TeronTotemBar_WeaponEnhancement_Button"):SetNormalTexture(WeaponEnhancements[TeronTotemBar_Options.SavedWeaponEnhancement].icon);
-        getglobal("TeronTotemBuffBar_WeaponEnhancement_Button"):Hide();
+        getglobal("TeronTotemBuffBar_WeaponEnhancement_Icon"):Hide();
     end);
 end
 
@@ -1119,7 +1119,7 @@ function CreateBuffButtons()
     TotemicRecallBuffButton:SetNormalTexture(recall_Totems[1].icon);
 
     --Weapon Enhancement Button
-    WeaponEnhancementBuffButton = CreateFrame("Button", "TeronTotemBuffBar_WeaponEnhancement_Button", WeaponEnhancementBuffButtonHolder);
+    WeaponEnhancementBuffButton = CreateFrame("Button", "TeronTotemBuffBar_WeaponEnhancement_Icon", WeaponEnhancementBuffButtonHolder);
     WeaponEnhancementBuffButton:SetWidth(button_size);
     WeaponEnhancementBuffButton:SetHeight(button_size);
     WeaponEnhancementBuffButton:SetPoint("LEFT", offset_x, 0);
