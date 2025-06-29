@@ -809,7 +809,10 @@ function CreateElementButtons()
         if TeronTotemBar_Options.TeronTotemBar_DebugMode == true then
             print("TERONSTORM WEAPON ENHANCEMENT INDEX: " .. TeronTotemBar_Options.SavedWeaponEnhancement);
         end
-        UpdateWeaponEnhancementButtonIcon();
+        --UpdateWeaponEnhancementButtonIcon();
+        --hides the old buff buttons on the buff bar
+        getglobal("TeronTotemBar_WeaponEnhancement_Button"):SetNormalTexture(WeaponEnhancements[TeronTotemBar_Options.SavedWeaponEnhancement].icon);
+        getglobal("TeronTotemBuffBar_WeaponEnhancement_Button"):Hide();
     end);
 end
 
@@ -1811,6 +1814,7 @@ function PlayerHasBuff(buffName)
 end
 
 --UPDATE HANDLERS FOR THE BUTTON ICONS
+--not used
 function UpdateEarthButtonIcon()
     getglobal("TeronTotemBar_Earth_Button"):SetNormalTexture(Earth_Totems[TeronTotemBar_Options.SavedTotemIndexes.Earth].icon);
     --hides the old buff buttons on the buff bar
@@ -1821,6 +1825,7 @@ function UpdateEarthButtonIcon()
     --creates the new buff buttons with the newly assigned totems
     CreateBuffButtons();
 end
+--not used
 function UpdateFireButtonIcon()
     getglobal("TeronTotemBar_Fire_Button"):SetNormalTexture(Fire_Totems[TeronTotemBar_Options.SavedTotemIndexes.Fire].icon);
     --hides the old buff buttons on the buff bar
@@ -1831,6 +1836,7 @@ function UpdateFireButtonIcon()
     --creates the new buff buttons with the newly assigned totems
     CreateBuffButtons();
 end
+--not used
 function UpdateWaterButtonIcon()
     getglobal("TeronTotemBar_Water_Button"):SetNormalTexture(Water_Totems[TeronTotemBar_Options.SavedTotemIndexes.Water].icon);
     --hides the old buff buttons on the buff bar
@@ -1841,6 +1847,7 @@ function UpdateWaterButtonIcon()
     --creates the new buff buttons with the newly assigned totems
     CreateBuffButtons();
 end
+--not used
 function UpdateAirButtonIcon()
     getglobal("TeronTotemBar_Air_Button"):SetNormalTexture(Air_Totems[TeronTotemBar_Options.SavedTotemIndexes.Air].icon);
     --hides the old buff buttons on the buff bar
@@ -1851,6 +1858,7 @@ function UpdateAirButtonIcon()
     --creates the new buff buttons with the newly assigned totems
     CreateBuffButtons();
 end
+--not used
 function UpdateWeaponEnhancementButtonIcon()
     getglobal("TeronTotemBar_WeaponEnhancement_Button"):SetNormalTexture(WeaponEnhancements[TeronTotemBar_Options.SavedWeaponEnhancement].icon);
     --hides the old buff buttons on the buff bar
